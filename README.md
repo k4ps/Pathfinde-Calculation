@@ -11,3 +11,18 @@ create a new character.
 Add Weapons and attacks to a character.
 
 Calculate the dpr for the current Full Round attack against an enemy with an inputtable ac
+
+# TODO-List:
+- GUI & all actionListeners
+
+- feat implementation
+
+- precision damage (sneak attack, keen, etc)
+
+- bonus damage on crit (from feats)
+
+- class features that alter attack and damage (smite, challenge)
+
+- Loading and saving characters
+
+- reading a list of Weapons&special abilites from file
