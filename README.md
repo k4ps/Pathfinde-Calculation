@@ -1,6 +1,7 @@
 # Pathfinde-Calculation
-a simple Programm, that calculates the dpr of a character and simulates an attack of an character for the pen and paper game Pathfinder
-The aim is, to have a simple .java or .exe, that one can just start and can use.
+This program calculates the DPR (Damage per Round) of a Character from the fantasy role-playing game Pathfinder.
+
+The aim is, to have a easyily understandable GUI to guide the user through the program.
 from the, yet to be implemented, GUI, one can:
 load or save a character.
 create a new character.
