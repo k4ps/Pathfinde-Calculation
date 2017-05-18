@@ -14,15 +14,10 @@ Calculate the dpr for the current Full Round attack against an enemy with an inp
 
 # TODO-List:
 - GUI & all actionListeners
-
 - feat implementation
-
 - precision damage (sneak attack, keen, etc)
-
 - bonus damage on crit (from feats)
-
 - class features that alter attack and damage (smite, challenge)
-
 - Loading and saving characters
-
 - reading a list of Weapons&special abilites from file
+- add buffs and implement their effect on dpr
