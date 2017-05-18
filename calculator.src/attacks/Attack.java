@@ -1,4 +1,11 @@
+/* This Program calculates the DPR (Damage per Round) of a Character from the fantasy role-playing game Pathfinder.
+ * Copyright (C) 2017  Konrad Schön
+ * This file is subject to the terms and conditions defined in file 'COPYING.txt', which is part of this source code package. 
+ */
+
 package attacks;
+
+import java.util.ArrayList;
 
 import weapons.*;
 
@@ -7,12 +14,13 @@ public class Attack {
 	private double[] damageModi;
 	private Weapon weapon;
 	private String weaponName;
+	private ArrayList<int[]> precisionDmgDice = new ArrayList<>();
 
 	public Attack(int hitStatMod, int damageStatMod, int bab, Weapon weapon, boolean fullRound) {
 		int arraySize = determineArraySize(bab);
 		this.weapon=weapon;
 		double hitBonus = bab + hitStatMod + weapon.getHitModificator();
-		double damageBonus = damageStatMod * weapon.getDamageMultiplier();
+		double damageBonus = damageStatMod * weapon.getDmgModificator();
 		weaponName=weapon.getName();
 
 		if (fullRound)
@@ -92,6 +100,10 @@ public class Attack {
 
 	public String getWeaponName() {
 		return weaponName;
+	}
+
+	public ArrayList<int[]> getPrecisionDmgDice() {
+		return precisionDmgDice;
 	}
 
 }
