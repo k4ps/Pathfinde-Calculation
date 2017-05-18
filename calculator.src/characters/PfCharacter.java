@@ -7,6 +7,7 @@ package characters;
 
 import java.util.ArrayList;
 
+import attacks.Attack;
 import attacks.FullRound;
 import weapons.Weapon;
 
@@ -23,6 +24,21 @@ public class PfCharacter {
 		this.bab=bab;
 		this.str=str;
 		this.dex=dex;
+	}
+	
+	public void addFullRound(String name, ArrayList<Weapon> usedWeapons, boolean fullRound){
+		FullRound newFullRound = new FullRound(name);
+		int hitmod;
+		int dmgmod=(str-10)/2;
+		if(feats.contains("Weapon Finesse")) hitmod=(dex-10)/2;
+		else hitmod=(str-10)/2;
+		
+		for(Weapon weapon:usedWeapons){
+			Attack attack = new Attack(hitmod, dmgmod, bab, weapon, fullRound);
+			newFullRound.addAttack(attack);
+		}
+		
+		fullRounds.add(newFullRound);
 	}
 
 	public String getName() {

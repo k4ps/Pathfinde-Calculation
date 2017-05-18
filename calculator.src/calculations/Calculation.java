@@ -11,7 +11,6 @@ import weapons.Weapon;
 
 public class Calculation {
 	static private FullRound fullRound;
-	// static private Attack attack;
 	static private Weapon weapon;
 	static int ac;
 
@@ -20,11 +19,16 @@ public class Calculation {
 		Calculation.ac = ac;
 	}
 
+	/*
+	 * calculates the dpr using the following formula(old): dpr += hitchance *
+	 * (averageDamage + precisionDamage) + critchance * hitchance *
+	 * (averageDamage * critmultiplier + bonusCritDamage);
+	 */
 	public static double calcDPR(FullRound chosenFullRound, int givenAc) {
 		new Calculation(chosenFullRound, givenAc);
 		double dpr = 0;
 		for (Attack attack : fullRound.getAttacks()) {
-			Calculation.weapon=attack.getWeapon();
+			Calculation.weapon = attack.getWeapon();
 			double[] attackModifiers = attack.getAttackModi();
 			double[] damageModifiers = attack.getDamageModi();
 			double hitchance;
@@ -35,14 +39,21 @@ public class Calculation {
 			double bonusCritDamage = calcAverageBonusCritDamage(attack);
 
 			for (int i = 0; i < attackModifiers.length; i++) {
-				hitchance = (20.00 - (ac - attackModifiers[i] - 1)) / 20.00;
+				hitchance = determineHitChance(ac, attackModifiers[i]);
 				double averageDamage = averageDiceDamage + damageModifiers[i];
-				dpr += hitchance * (averageDamage + precisionDamage)
-						+ critchance * hitchance * (averageDamage * critmultiplier + bonusCritDamage);
+				dpr += hitchance * ((1 - critchance) * (averageDamage + precisionDamage)
+						+ critchance * (1 - hitchance) * (averageDamage + precisionDamage)
+						+ critchance * hitchance * (critmultiplier * averageDamage + bonusCritDamage));
 			}
 		}
 
 		return dpr;
+	}
+
+	private static double determineHitChance(int ac2, double attackModifier) {
+		if(attackModifier>ac2) return 0.95;
+		if(attackModifier+20<ac2) return 0.05;
+		return (20.00 - (ac - attackModifier - 1)) / 20.00;		
 	}
 
 	private static double calcAverageBonusCritDamage(Attack attack2) {
@@ -56,8 +67,12 @@ public class Calculation {
 	}
 
 	private static double calcAverageDiceDamage(Weapon weapon2) {
-		// TODO Auto-generated method stub
-		return 0;
+		int[] dmgDice = weapon2.getDmgDice();
+		double averageDmg = 0.0;
+		for (int i = 1; i <= dmgDice[1]; i++) {
+			averageDmg += i;
+		}
+		return averageDmg / dmgDice[1] * dmgDice[0];
 	}
 
 }

@@ -18,34 +18,33 @@ public class Attack {
 
 	public Attack(int hitStatMod, int damageStatMod, int bab, Weapon weapon, boolean fullRound) {
 		int arraySize = determineArraySize(bab);
-		this.weapon=weapon;
-		double hitBonus = bab + hitStatMod + weapon.getHitModificator();
-		double damageBonus = damageStatMod * weapon.getDmgModificator();
-		weaponName=weapon.getName();
+		this.weapon = weapon;
+		double hitBonus = bab + hitStatMod + weapon.getHitBonus();
+		double damageBonus = damageStatMod * weapon.getDmgMod() + weapon.getDmgBonus();
+		weaponName = weapon.getName();
 
 		if (fullRound)
 			initaliseFullRound(arraySize, hitBonus, damageBonus);
-		else{
+		else {
 			initaliseSingleAttack(hitBonus, damageBonus);
 		}
 	}
 
 	private void initaliseSingleAttack(double hitBonus, double damageBonus) {
-		attackModi = new double[]{hitBonus};
-		damageModi = new double[]{damageBonus};
-		
-		
+		attackModi = new double[] { hitBonus };
+		damageModi = new double[] { damageBonus };
+
 	}
 
 	private void initaliseFullRound(int arraySize, double hitBonus, double damageBonus) {
 		attackModi = new double[arraySize];
 		damageModi = new double[arraySize];
 
-		for (int i = 0; i < arraySize - 1; i++) {
+		for (int i = 0; i < arraySize; i++) {
 			attackModi[i] = hitBonus - 5 * i;
 			damageModi[i] = damageBonus;
 		}
-		
+
 	}
 
 	public void addStaticAttackModi(double staticAttackBonus) {
@@ -59,21 +58,21 @@ public class Attack {
 			damageModi[i] += staticDamageBonus;
 		}
 	}
-	
-	public void addFullBabAttack(){
+
+	public void addFullBabAttack() {
 		double[] tempAttack = attackModi;
 		double[] tempDamage = damageModi;
-		attackModi=new double[tempAttack.length+1];
-		damageModi=new double[tempDamage.length+1];
-		
-		attackModi[0]=tempAttack[0];
-		damageModi[0]=tempDamage[0];
-		
-		for(int i=1; i<attackModi.length; i++){
-			attackModi[i]=tempAttack[i-1];
-			damageModi[i]=tempDamage[i-1];
+		attackModi = new double[tempAttack.length + 1];
+		damageModi = new double[tempDamage.length + 1];
+
+		attackModi[0] = tempAttack[0];
+		damageModi[0] = tempDamage[0];
+
+		for (int i = 1; i < attackModi.length; i++) {
+			attackModi[i] = tempAttack[i - 1];
+			damageModi[i] = tempDamage[i - 1];
 		}
-		
+
 	}
 
 	public Weapon getWeapon() {

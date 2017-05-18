@@ -14,31 +14,48 @@ public class Weapon {
 	private ArrayList<String> specials = new ArrayList<>();
 	private int critMultiplier;
 	private int critRange;
-	private int hitModificator;
-	private int dmgModificator;
+	private int hitBonus;
+	private int dmgBonus;
+	private double dmgMod;
 	private int type;
 
 	public Weapon(String name, int[] dmgDice, ArrayList<String> specials, int critMultiplier, int critRange,
-			int enhancement) {
+			int enhancement, int type) {
 		this.name = name;
 		this.dmgDice = dmgDice;
 		this.specials = specials;
 		this.critMultiplier = critMultiplier;
 		this.critRange = critRange;
-		this.hitModificator = enhancement;
-		this.dmgModificator = enhancement;
+		this.hitBonus = enhancement;
+		this.dmgBonus = enhancement;
+		this.type = type;
+		determineDmgMod();
 		determineSpecialsEffect();
+	}
+	
+	public Weapon(String name, int[] dmgDice, int critMultiplier, int critRange,
+			int enhancement, int type) {
+		this.name = name;
+		this.dmgDice = dmgDice;
+		this.critMultiplier = critMultiplier;
+		this.critRange = critRange;
+		this.hitBonus = enhancement;
+		this.dmgBonus = enhancement;
+		this.type = type;
+		determineDmgMod();
 	}
 
 	public Weapon(String name, int[] dmgDice, ArrayList<String> specials, int critMultiplier, int critRange,
-			int hitModificator, int dmgModificator) {
+			int hitModificator, int dmgModificator, int type) {
 		this.name = name;
 		this.dmgDice = dmgDice;
 		this.specials = specials;
 		this.critMultiplier = critMultiplier;
 		this.critRange = critRange;
-		this.hitModificator = hitModificator;
-		this.dmgModificator = dmgModificator;
+		this.hitBonus = hitModificator;
+		this.dmgBonus = dmgModificator;
+		this.type = type;
+		determineDmgMod();
 		determineSpecialsEffect();
 	}
 
@@ -52,14 +69,25 @@ public class Weapon {
 
 	}
 
-	public int getHitModificator() {
-		return hitModificator;
+	private void determineDmgMod() {
+		if (type == 0)
+			dmgMod = 1.5;
+		else
+			dmgMod = 1.0;
+	}
+
+	public int getHitBonus() {
+		return hitBonus;
 	}
 
 	public String getName() {
 		return name;
 	}
-
+	
+	/*
+	 * @return int[2] containing infos about the dmg dice.
+	 * @return [0]=amountOfDice, [1]=typeOfDice
+	 */
 	public int[] getDmgDice() {
 		return dmgDice;
 	}
@@ -76,8 +104,8 @@ public class Weapon {
 		return critRange;
 	}
 
-	public int getDmgModificator() {
-		return dmgModificator;
+	public int getDmgBonus() {
+		return dmgBonus;
 	}
 
 	/*
@@ -86,6 +114,14 @@ public class Weapon {
 	 */
 	public int getType() {
 		return type;
+	}
+
+	public double getDmgMod() {
+		return dmgMod;
+	}
+
+	public void setDmgMod(double dmgMod) {
+		this.dmgMod = dmgMod;
 	}
 
 }
