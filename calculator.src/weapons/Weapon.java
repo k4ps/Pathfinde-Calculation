@@ -59,6 +59,10 @@ public class Weapon {
 		determineSpecialsEffect();
 	}
 
+	public Weapon() {
+		// TODO Auto-generated constructor stub
+	}
+
 	private void determineSpecialsEffect() {
 		// TODO Auto-generated method stub
 		for (String special : specials) {
@@ -122,6 +126,12 @@ public class Weapon {
 
 	public void setDmgMod(double dmgMod) {
 		this.dmgMod = dmgMod;
+	}
+	
+	public boolean addSpecial(String special){
+		if(specials.contains(special)) return false;
+		specials.add(special);
+		return true;
 	}
 
 }
