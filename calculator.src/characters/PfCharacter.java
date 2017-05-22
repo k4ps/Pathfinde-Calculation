@@ -18,27 +18,43 @@ public class PfCharacter {
 	private int dex;
 	private ArrayList<FullRound> fullRounds = new ArrayList<>();
 	private ArrayList<String> feats = new ArrayList<>();
-	
-	public PfCharacter(String name, int bab, int str, int dex){
-		this.name=name;
-		this.bab=bab;
-		this.str=str;
-		this.dex=dex;
+
+	public PfCharacter(String name, int bab, int str, int dex) {
+		this.name = name;
+		this.bab = bab;
+		this.str = str;
+		this.dex = dex;
 	}
-	
-	public void addFullRound(String name, ArrayList<Weapon> usedWeapons, boolean fullRound){
+
+	public void addFullRound(String name, ArrayList<Weapon> usedWeapons, boolean fullRound) {
 		FullRound newFullRound = new FullRound(name);
 		int hitmod;
-		int dmgmod=(str-10)/2;
-		if(feats.contains("Weapon Finesse")) hitmod=(dex-10)/2;
-		else hitmod=(str-10)/2;
-		
-		for(Weapon weapon:usedWeapons){
+		int dmgmod = (str - 10) / 2;
+		if (feats.contains("Weapon Finesse"))
+			hitmod = (dex - 10) / 2;
+		else
+			hitmod = (str - 10) / 2;
+
+		for (Weapon weapon : usedWeapons) {
 			Attack attack = new Attack(hitmod, dmgmod, bab, weapon, fullRound);
 			newFullRound.addAttack(attack);
 		}
-		
+
 		fullRounds.add(newFullRound);
+	}
+
+	public void addBuff(String buffname) {
+		switch (buffname) {
+		case ("Haste"): {
+			for (FullRound fullround : fullRounds) {
+				for (Attack attack : fullround.getAttacks()) {
+					if (attack.isFullRound())
+						attack.addFullBabAttack();
+				}
+			}
+
+		}
+		}
 	}
 
 	public String getName() {
@@ -64,6 +80,5 @@ public class PfCharacter {
 	public ArrayList<String> getFeats() {
 		return feats;
 	}
-	
-	
+
 }

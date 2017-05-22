@@ -14,11 +14,13 @@ public class Attack {
 	private double[] damageModi;
 	private Weapon weapon;
 	private String weaponName;
+	private boolean fullRound;
 	private ArrayList<int[]> precisionDmgDice = new ArrayList<>();
 
 	public Attack(int hitStatMod, int damageStatMod, int bab, Weapon weapon, boolean fullRound) {
 		int arraySize = determineArraySize(bab);
 		this.weapon = weapon;
+		this.fullRound=fullRound;
 		double hitBonus = bab + hitStatMod + weapon.getHitBonus();
 		double damageBonus = damageStatMod * weapon.getDmgMod() + weapon.getDmgBonus();
 		weaponName = weapon.getName();
@@ -103,6 +105,10 @@ public class Attack {
 
 	public ArrayList<int[]> getPrecisionDmgDice() {
 		return precisionDmgDice;
+	}
+
+	public boolean isFullRound() {
+		return fullRound;
 	}
 
 }
