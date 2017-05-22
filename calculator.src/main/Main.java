@@ -22,7 +22,7 @@ public class Main {
 		testChar.addFullRound("Test", weapons, true);
 		
 		for(FullRound fullRound:testChar.getFullRounds()){
-			System.out.println("Dpr von" + fullRound.getName() + "= " + Calculation.calcDPR(fullRound, 20));
+			System.out.println("Dpr von " + fullRound.getName() + "= " + Calculation.calcDPR(fullRound, 20));
 		}
 	}
 
