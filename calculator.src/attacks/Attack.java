@@ -9,6 +9,10 @@ import java.util.ArrayList;
 
 import weapons.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Attack.
+ */
 public class Attack {
 	private double[] attackModi;
 	private double[] damageModi;
@@ -17,6 +21,15 @@ public class Attack {
 	private boolean fullRound;
 	private ArrayList<int[]> precisionDmgDice = new ArrayList<>();
 
+	/**
+	 * Instantiates a new attack.
+	 *
+	 * @param hitStatMod the hit stat mod
+	 * @param damageStatMod the damage stat mod
+	 * @param bab the bab
+	 * @param weapon the weapon
+	 * @param fullRound the full round
+	 */
 	public Attack(int hitStatMod, int damageStatMod, int bab, Weapon weapon, boolean fullRound) {
 		int arraySize = determineArraySize(bab);
 		this.weapon = weapon;
@@ -49,18 +62,31 @@ public class Attack {
 
 	}
 
+	/**
+	 * Adds the static attack modi.
+	 *
+	 * @param staticAttackBonus the static attack bonus
+	 */
 	public void addStaticAttackModi(double staticAttackBonus) {
 		for (int i = 0; i < attackModi.length; i++) {
 			attackModi[i] += staticAttackBonus;
 		}
 	}
 
+	/**
+	 * Adds the static damage modi.
+	 *
+	 * @param staticDamageBonus the static damage bonus
+	 */
 	public void addStaticDamageModi(double staticDamageBonus) {
 		for (int i = 0; i < damageModi.length; i++) {
 			damageModi[i] += staticDamageBonus;
 		}
 	}
 
+	/**
+	 * Adds the full bab attack.
+	 */
 	public void addFullBabAttack() {
 		double[] tempAttack = attackModi;
 		double[] tempDamage = damageModi;
@@ -77,14 +103,29 @@ public class Attack {
 
 	}
 
+	/**
+	 * Gets the weapon.
+	 *
+	 * @return the weapon
+	 */
 	public Weapon getWeapon() {
 		return weapon;
 	}
 
+	/**
+	 * Gets the attack modi.
+	 *
+	 * @return the attack modi
+	 */
 	public double[] getAttackModi() {
 		return attackModi;
 	}
 
+	/**
+	 * Gets the damage modi.
+	 *
+	 * @return the damage modi
+	 */
 	public double[] getDamageModi() {
 		return damageModi;
 	}
@@ -99,14 +140,29 @@ public class Attack {
 		return 4;
 	}
 
+	/**
+	 * Gets the weapon name.
+	 *
+	 * @return the weapon name
+	 */
 	public String getWeaponName() {
 		return weaponName;
 	}
 
+	/**
+	 * Gets the precision dmg dice.
+	 *
+	 * @return the precision dmg dice
+	 */
 	public ArrayList<int[]> getPrecisionDmgDice() {
 		return precisionDmgDice;
 	}
 
+	/**
+	 * Checks if is full round.
+	 *
+	 * @return true, if is full round
+	 */
 	public boolean isFullRound() {
 		return fullRound;
 	}

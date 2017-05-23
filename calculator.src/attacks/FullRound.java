@@ -7,23 +7,47 @@ package attacks;
 
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FullRound.
+ */
 public class FullRound {
 	private ArrayList<Attack> attacks = new ArrayList<>();
 	private String name;
 	
+	/**
+	 * Instantiates a new full round.
+	 *
+	 * @param name the name
+	 */
 	public FullRound(String name){
 		this.name=name + " mit: ";
 	}
 	
+	/**
+	 * Adds the attack.
+	 *
+	 * @param attack the attack
+	 */
 	public void addAttack(Attack attack){
 		attacks.add(attack);
 		name = name+attack.getWeaponName()+", ";
 	}
 	
+	/**
+	 * Gets the attacks.
+	 *
+	 * @return the attacks
+	 */
 	public ArrayList<Attack> getAttacks() {
 		return attacks;
 	}
 
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
 	public String getName(){
 		return name;
 	}

@@ -1,3 +1,7 @@
+/* This Program calculates the DPR (Damage per Round) of a Character from the fantasy role-playing game Pathfinder.
+ * Copyright (C) 2017  Konrad Schön
+ * This file is subject to the terms and conditions defined in file 'COPYING.txt', which is part of this source code package. 
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -9,12 +13,18 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class StartFrame.
+ */
 public class StartFrame extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

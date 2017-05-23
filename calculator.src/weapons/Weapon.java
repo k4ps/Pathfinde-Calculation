@@ -7,6 +7,7 @@ package weapons;
 
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
 public class Weapon {
 	private String name;
 	private int[] dmgDice = new int[2];
@@ -19,6 +20,24 @@ public class Weapon {
 	private double dmgMod;
 	private int type;
 
+	/**
+	 * Instantiates a new weapon.
+	 *
+	 * @param name
+	 *            the name
+	 * @param dmgDice
+	 *            the dmg dice
+	 * @param specials
+	 *            the specials
+	 * @param critMultiplier
+	 *            the crit multiplier
+	 * @param critRange
+	 *            the crit range
+	 * @param enhancement
+	 *            the enhancement
+	 * @param type
+	 *            the type
+	 */
 	public Weapon(String name, int[] dmgDice, ArrayList<String> specials, int critMultiplier, int critRange,
 			int enhancement, int type) {
 		this.name = name;
@@ -32,9 +51,24 @@ public class Weapon {
 		determineDmgMod();
 		determineSpecialsEffect();
 	}
-	
-	public Weapon(String name, int[] dmgDice, int critMultiplier, int critRange,
-			int enhancement, int type) {
+
+	/**
+	 * Instantiates a new weapon.
+	 *
+	 * @param name
+	 *            the name
+	 * @param dmgDice
+	 *            the dmg dice
+	 * @param critMultiplier
+	 *            the crit multiplier
+	 * @param critRange
+	 *            the crit range
+	 * @param enhancement
+	 *            the enhancement
+	 * @param type
+	 *            the type
+	 */
+	public Weapon(String name, int[] dmgDice, int critMultiplier, int critRange, int enhancement, int type) {
 		this.name = name;
 		this.dmgDice = dmgDice;
 		this.critMultiplier = critMultiplier;
@@ -45,6 +79,26 @@ public class Weapon {
 		determineDmgMod();
 	}
 
+	/**
+	 * Instantiates a new weapon.
+	 *
+	 * @param name
+	 *            the name
+	 * @param dmgDice
+	 *            the dmg dice
+	 * @param specials
+	 *            the specials
+	 * @param critMultiplier
+	 *            the crit multiplier
+	 * @param critRange
+	 *            the crit range
+	 * @param hitModificator
+	 *            the hit modificator
+	 * @param dmgModificator
+	 *            the dmg modificator
+	 * @param type
+	 *            the type
+	 */
 	public Weapon(String name, int[] dmgDice, ArrayList<String> specials, int critMultiplier, int critRange,
 			int hitModificator, int dmgModificator, int type) {
 		this.name = name;
@@ -59,6 +113,9 @@ public class Weapon {
 		determineSpecialsEffect();
 	}
 
+	/**
+	 * Instantiates a new weapon.
+	 */
 	public Weapon() {
 		// TODO Auto-generated constructor stub
 	}
@@ -80,56 +137,113 @@ public class Weapon {
 			dmgMod = 1.0;
 	}
 
+	/**
+	 * Gets the hit bonus.
+	 *
+	 * @return the hit bonus
+	 */
 	public int getHitBonus() {
 		return hitBonus;
 	}
 
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
 	public String getName() {
 		return name;
 	}
-	
+
+	/**
+	 * Gets the dmg dice.
+	 *
+	 * @return the dmg dice
+	 */
 	/*
 	 * @return int[2] containing infos about the dmg dice.
+	 * 
 	 * @return [0]=amountOfDice, [1]=typeOfDice
 	 */
 	public int[] getDmgDice() {
 		return dmgDice;
 	}
 
+	/**
+	 * Gets the precision dmg dice.
+	 *
+	 * @return the precision dmg dice
+	 */
 	public ArrayList<int[]> getPrecisionDmgDice() {
 		return precisionDmgDice;
 	}
 
+	/**
+	 * Gets the crit multiplier.
+	 *
+	 * @return the crit multiplier
+	 */
 	public int getCritMultiplier() {
 		return critMultiplier;
 	}
 
+	/**
+	 * Gets the crit range.
+	 *
+	 * @return the crit range
+	 */
 	public int getCritRange() {
 		return critRange;
 	}
 
+	/**
+	 * Gets the dmg bonus.
+	 *
+	 * @return the dmg bonus
+	 */
 	public int getDmgBonus() {
 		return dmgBonus;
 	}
 
-	/*
-	 * @return: Number describing the Type of Weapon. 0=2H, 1=1H-Main-Hand,
-	 * 2=1H-Off-Hand, 3=Ranged, 4=Primary Natural, 5=Secondary Natural
+	/**
+	 * Gets the type.
+	 *
+	 * @return Number describing the Type of Weapon. 0=2H, 1=1H-Main-Hand,
+	 *         2=1H-Off-Hand, 3=Ranged, 4=Primary Natural, 5=Secondary Natural
 	 */
 	public int getType() {
 		return type;
 	}
 
+	/**
+	 * Gets the dmg mod.
+	 *
+	 * @return the dmg mod
+	 */
 	public double getDmgMod() {
 		return dmgMod;
 	}
 
+	/**
+	 * Sets the dmg mod.
+	 *
+	 * @param dmgMod
+	 *            the new dmg mod
+	 */
 	public void setDmgMod(double dmgMod) {
 		this.dmgMod = dmgMod;
 	}
-	
-	public boolean addSpecial(String special){
-		if(specials.contains(special)) return false;
+
+	/**
+	 * Adds the special.
+	 *
+	 * @param special
+	 *            the special
+	 * @return true, if successful
+	 */
+	public boolean addSpecial(String special) {
+		if (specials.contains(special))
+			return false;
 		specials.add(special);
 		return true;
 	}

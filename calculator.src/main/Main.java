@@ -12,8 +12,17 @@ import calculations.Calculation;
 import characters.PfCharacter;
 import weapons.Weapon;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Main.
+ */
 public class Main {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		PfCharacter testChar=new PfCharacter("testerino", 14, 26, 12);

@@ -22,6 +22,10 @@ import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AddWeaponDialog.
+ */
 public class AddWeaponDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -29,6 +33,8 @@ public class AddWeaponDialog extends JDialog {
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		try {

@@ -11,6 +11,10 @@ import attacks.Attack;
 import attacks.FullRound;
 import weapons.Weapon;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PfCharacter.
+ */
 public class PfCharacter {
 	private String name;
 	private int bab;
@@ -20,6 +24,14 @@ public class PfCharacter {
 	private ArrayList<Weapon> weapons = new ArrayList<>();
 	private ArrayList<String> feats = new ArrayList<>();
 
+	/**
+	 * Instantiates a new pf character.
+	 *
+	 * @param name the name
+	 * @param bab the bab
+	 * @param str the str
+	 * @param dex the dex
+	 */
 	public PfCharacter(String name, int bab, int str, int dex) {
 		this.name = name;
 		this.bab = bab;
@@ -27,6 +39,13 @@ public class PfCharacter {
 		this.dex = dex;
 	}
 
+	/**
+	 * Adds the full round.
+	 *
+	 * @param name the name
+	 * @param usedWeapons the used weapons
+	 * @param fullRound the full round
+	 */
 	public void addFullRound(String name, ArrayList<Weapon> usedWeapons, boolean fullRound) {
 		FullRound newFullRound = new FullRound(name);
 		int hitmod;
@@ -44,6 +63,11 @@ public class PfCharacter {
 		fullRounds.add(newFullRound);
 	}
 
+	/**
+	 * Adds the buff.
+	 *
+	 * @param buffname the buffname
+	 */
 	public void addBuff(String buffname) {
 		switch (buffname) {
 		case ("Haste"): {
@@ -58,6 +82,11 @@ public class PfCharacter {
 		}
 	}
 	
+	/**
+	 * Adds the weapon.
+	 *
+	 * @param weapon the weapon
+	 */
 	public void addWeapon(Weapon weapon){
 		determineFeatInfluence(weapon);
 	}
@@ -78,26 +107,56 @@ public class PfCharacter {
 		}
 	}
 
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Gets the bab.
+	 *
+	 * @return the bab
+	 */
 	public int getBab() {
 		return bab;
 	}
 
+	/**
+	 * Gets the str.
+	 *
+	 * @return the str
+	 */
 	public int getStr() {
 		return str;
 	}
 
+	/**
+	 * Gets the dex.
+	 *
+	 * @return the dex
+	 */
 	public int getDex() {
 		return dex;
 	}
 
+	/**
+	 * Gets the full rounds.
+	 *
+	 * @return the full rounds
+	 */
 	public ArrayList<FullRound> getFullRounds() {
 		return fullRounds;
 	}
 
+	/**
+	 * Gets the feats.
+	 *
+	 * @return the feats
+	 */
 	public ArrayList<String> getFeats() {
 		return feats;
 	}

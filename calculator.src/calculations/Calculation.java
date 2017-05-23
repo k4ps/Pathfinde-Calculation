@@ -9,16 +9,33 @@ import attacks.Attack;
 import attacks.FullRound;
 import weapons.Weapon;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Calculation.
+ */
 public class Calculation {
 	static private FullRound fullRound;
 	static private Weapon weapon;
 	static int ac;
 
+	/**
+	 * Instantiates a new calculation.
+	 *
+	 * @param chosenFullRound the chosen full round
+	 * @param ac the ac
+	 */
 	public Calculation(FullRound chosenFullRound, int ac) {
 		Calculation.fullRound = chosenFullRound;
 		Calculation.ac = ac;
 	}
 
+	/**
+	 * Calc DPR.
+	 *
+	 * @param chosenFullRound the chosen full round
+	 * @param givenAc the given ac
+	 * @return the double
+	 */
 	/*
 	 * calculates the dpr using the following formula(old): dpr += hitchance *
 	 * (averageDamage + precisionDamage) + critchance * hitchance *
