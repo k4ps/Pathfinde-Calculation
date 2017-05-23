@@ -17,6 +17,7 @@ public class PfCharacter {
 	private int str;
 	private int dex;
 	private ArrayList<FullRound> fullRounds = new ArrayList<>();
+	private ArrayList<Weapon> weapons = new ArrayList<>();
 	private ArrayList<String> feats = new ArrayList<>();
 
 	public PfCharacter(String name, int bab, int str, int dex) {
@@ -53,6 +54,26 @@ public class PfCharacter {
 				}
 			}
 
+		}
+		}
+	}
+	
+	public void addWeapon(Weapon weapon){
+		determineFeatInfluence(weapon);
+	}
+
+	/*
+	 * 
+	 */
+	private void determineFeatInfluence(Weapon weapon) {
+		// TODO Auto-generated method stub
+		switch(weapon.getType()){
+		case(0):{
+			for(String feat:feats){
+				switch(feat){
+				case(""):;
+				}
+			}
 		}
 		}
 	}
