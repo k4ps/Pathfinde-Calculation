@@ -8,6 +8,10 @@ package weapons;
 import java.util.ArrayList;
 
 // TODO: Auto-generated Javadoc
+/**
+ * The Class Weapon.
+ */
+// TODO: Auto-generated Javadoc
 public class Weapon {
 	private String name;
 	private int[] dmgDice = new int[2];
@@ -224,10 +228,20 @@ public class Weapon {
 		return dmgMod;
 	}
 
+	/**
+	 * Sets the hit bonus.
+	 *
+	 * @param hitBonus the new hit bonus
+	 */
 	public void setHitBonus(int hitBonus) {
 		this.hitBonus = hitBonus;
 	}
 
+	/**
+	 * Sets the dmg bonus.
+	 *
+	 * @param dmgBonus the new dmg bonus
+	 */
 	public void setDmgBonus(int dmgBonus) {
 		this.dmgBonus = dmgBonus;
 	}

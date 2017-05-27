@@ -83,6 +83,11 @@ public class PfCharacter {
 		}
 	}
 	
+	/**
+	 * Adds the feat.
+	 *
+	 * @param feat the feat
+	 */
 	public void addFeat(String feat){
 		feats.add(feat);
 	}
@@ -151,6 +156,11 @@ public class PfCharacter {
 		return feats;
 	}
 
+	/**
+	 * Gets the weapons.
+	 *
+	 * @return the weapons
+	 */
 	public ArrayList<Weapon> getWeapons() {
 		return weapons;
 	}

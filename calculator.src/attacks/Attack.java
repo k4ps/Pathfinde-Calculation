@@ -22,6 +22,13 @@ public class Attack {
 	private boolean fullRound;
 	private ArrayList<int[]> precisionDmgDice = new ArrayList<>();
 
+	/**
+	 * Instantiates a new attack.
+	 *
+	 * @param character the character
+	 * @param weapon the weapon
+	 * @param fullRound the full round
+	 */
 	public Attack(PfCharacter character, Weapon weapon, boolean fullRound) {
 		double hitMod = determineHitMod(character);
 		int arraySize = determineArraySize(character);
