@@ -15,6 +15,22 @@ Calculate the dpr for the current Full Round attack against an enemy with an inp
 # TODO-List:
 - GUI & all actionListeners
 - feat implementation
+- feats to implement:
+- - Arcane Strike
+- - Critical Focus
+- - Flury of Blows
+- - Medusa's Wrath
+- - Point-Blank Shot
+- - Rapidshot
+- - Manyshot
+- - Two-Weapon Fighting
+- - Improved Two-Weapon Fighting
+- - Greater Two-Weapon Fighting
+- - Double Slice
+- - Two-Weapon Rend
+- - Shield Mastery
+- - Vital Strike
+- - Furious Focus
 - precision damage (sneak attack, keen, etc)
 - bonus damage on crit (from feats)
 - class features that alter attack and damage (smite, challenge)
