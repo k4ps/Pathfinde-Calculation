@@ -68,7 +68,7 @@ public class Calculation {
 	}
 
 	private static double determineHitChance(int ac2, double attackModifier) {
-		if(attackModifier>ac2) return 0.95;
+		if(attackModifier>=ac2-2) return 0.95;
 		if(attackModifier+20<ac2) return 0.05;
 		return (20.00 - (ac - attackModifier - 1)) / 20.00;		
 	}

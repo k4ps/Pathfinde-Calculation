@@ -27,10 +27,14 @@ public class PfCharacter {
 	/**
 	 * Instantiates a new pf character.
 	 *
-	 * @param name the name
-	 * @param bab the bab
-	 * @param str the str
-	 * @param dex the dex
+	 * @param name
+	 *            the name
+	 * @param bab
+	 *            the bab
+	 * @param str
+	 *            the str
+	 * @param dex
+	 *            the dex
 	 */
 	public PfCharacter(String name, int bab, int str, int dex) {
 		this.name = name;
@@ -42,9 +46,12 @@ public class PfCharacter {
 	/**
 	 * Adds the full round.
 	 *
-	 * @param name the name
-	 * @param usedWeapons the used weapons
-	 * @param fullRound the full round
+	 * @param name
+	 *            the name
+	 * @param usedWeapons
+	 *            the used weapons
+	 * @param fullRound
+	 *            the full round
 	 */
 	public void addFullRound(String name, ArrayList<Weapon> usedWeapons, boolean fullRound) {
 		FullRound newFullRound = new FullRound(name);
@@ -66,7 +73,8 @@ public class PfCharacter {
 	/**
 	 * Adds the buff.
 	 *
-	 * @param buffname the buffname
+	 * @param buffname
+	 *            the buffname
 	 */
 	public void addBuff(String buffname) {
 		switch (buffname) {
@@ -82,25 +90,31 @@ public class PfCharacter {
 		}
 	}
 	
+	public void addFeat(String feat){
+		feats.add(feat);
+	}
+
 	/**
 	 * Adds the weapon.
 	 *
-	 * @param weapon the weapon
+	 * @param weapon
+	 *            the weapon
 	 */
-	public void addWeapon(Weapon weapon){
+	public void addWeapon(Weapon weapon) {
+		weapons.add(weapon);
 		determineFeatInfluence(weapon);
 	}
 
-	/*
-	 * 
-	 */
+
 	private void determineFeatInfluence(Weapon weapon) {
-		// TODO Auto-generated method stub
-		switch(weapon.getType()){
-		case(0):{
-			for(String feat:feats){
-				switch(feat){
-				case(""):;
+		switch (weapon.getType()) {
+		case (0): {
+			for (String feat : feats) {
+				switch (feat) {
+				case ("Power Attack"): {
+					weapon.setHitBonus(weapon.getHitBonus() - 1 - bab / 4);
+					weapon.setDmgBonus((int) (weapon.getDmgBonus()+2*weapon.getDmgMod()*(1+bab/4)));
+				}
 				}
 			}
 		}
@@ -159,6 +173,10 @@ public class PfCharacter {
 	 */
 	public ArrayList<String> getFeats() {
 		return feats;
+	}
+
+	public ArrayList<Weapon> getWeapons() {
+		return weapons;
 	}
 
 }

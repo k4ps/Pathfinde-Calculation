@@ -224,6 +224,14 @@ public class Weapon {
 		return dmgMod;
 	}
 
+	public void setHitBonus(int hitBonus) {
+		this.hitBonus = hitBonus;
+	}
+
+	public void setDmgBonus(int dmgBonus) {
+		this.dmgBonus = dmgBonus;
+	}
+
 	/**
 	 * Sets the dmg mod.
 	 *

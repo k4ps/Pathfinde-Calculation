@@ -26,12 +26,14 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		PfCharacter testChar=new PfCharacter("testerino", 14, 26, 12);
+		testChar.addFeat("Power Attack");
+		testChar.addWeapon(new Weapon("Falchion", new int[]{2,4}, 2, 6, 2, 0));
 		ArrayList<Weapon> weapons = new ArrayList<>();
-		weapons.add(new Weapon("Falchion", new int[]{2,4}, 2, 6, 2, 0));
+		weapons=testChar.getWeapons();
 		testChar.addFullRound("Test", weapons, true);
 		
 		for(FullRound fullRound:testChar.getFullRounds()){
-			System.out.println("Dpr von " + fullRound.getName() + "= " + Calculation.calcDPR(fullRound, 20));
+			System.out.println("Dpr von " + fullRound.getName() + " = " + Calculation.calcDPR(fullRound, 20));
 		}
 	}
 
