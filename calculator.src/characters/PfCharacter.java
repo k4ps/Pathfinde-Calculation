@@ -55,15 +55,8 @@ public class PfCharacter {
 	 */
 	public void addFullRound(String name, ArrayList<Weapon> usedWeapons, boolean fullRound) {
 		FullRound newFullRound = new FullRound(name);
-		int hitmod;
-		int dmgmod = (str - 10) / 2;
-		if (feats.contains("Weapon Finesse"))
-			hitmod = (dex - 10) / 2;
-		else
-			hitmod = (str - 10) / 2;
-
 		for (Weapon weapon : usedWeapons) {
-			Attack attack = new Attack(hitmod, dmgmod, bab, weapon, fullRound);
+			Attack attack = new Attack(this, weapon, fullRound);
 			newFullRound.addAttack(attack);
 		}
 
@@ -102,23 +95,6 @@ public class PfCharacter {
 	 */
 	public void addWeapon(Weapon weapon) {
 		weapons.add(weapon);
-		determineFeatInfluence(weapon);
-	}
-
-
-	private void determineFeatInfluence(Weapon weapon) {
-		switch (weapon.getType()) {
-		case (0): {
-			for (String feat : feats) {
-				switch (feat) {
-				case ("Power Attack"): {
-					weapon.setHitBonus(weapon.getHitBonus() - 1 - bab / 4);
-					weapon.setDmgBonus((int) (weapon.getDmgBonus()+2*weapon.getDmgMod()*(1+bab/4)));
-				}
-				}
-			}
-		}
-		}
 	}
 
 	/**

@@ -7,6 +7,7 @@ package attacks;
 
 import java.util.ArrayList;
 
+import characters.PfCharacter;
 import weapons.*;
 
 // TODO: Auto-generated Javadoc
@@ -21,21 +22,13 @@ public class Attack {
 	private boolean fullRound;
 	private ArrayList<int[]> precisionDmgDice = new ArrayList<>();
 
-	/**
-	 * Instantiates a new attack.
-	 *
-	 * @param hitStatMod the hit stat mod
-	 * @param damageStatMod the damage stat mod
-	 * @param bab the bab
-	 * @param weapon the weapon
-	 * @param fullRound the full round
-	 */
-	public Attack(int hitStatMod, int damageStatMod, int bab, Weapon weapon, boolean fullRound) {
-		int arraySize = determineArraySize(bab);
+	public Attack(PfCharacter character, Weapon weapon, boolean fullRound) {
+		double hitMod = determineHitMod(character);
+		int arraySize = determineArraySize(character);
 		this.weapon = weapon;
-		this.fullRound=fullRound;
-		double hitBonus = bab + hitStatMod + weapon.getHitBonus();
-		double damageBonus = damageStatMod * weapon.getDmgMod() + weapon.getDmgBonus();
+		this.fullRound = fullRound;
+		double hitBonus = determineHitBonus(character, weapon, hitMod);
+		double damageBonus = determineDmgBonus(character, weapon, hitMod);
 		weaponName = weapon.getName();
 
 		if (fullRound)
@@ -43,6 +36,126 @@ public class Attack {
 		else {
 			initaliseSingleAttack(hitBonus, damageBonus);
 		}
+	}
+
+	private double determineDmgBonus(PfCharacter character, Weapon weapon2, double hitMod) {
+		double standardDmgBonus = ((character.getStr() - 10) / 2) * weapon.getDmgMod() + weapon.getDmgBonus();
+		switch (weapon.getType()) {
+		case (0): {
+			for (String feat : character.getFeats()) {
+				switch (feat) {
+				case ("Power Attack"): {
+					standardDmgBonus = weapon.getDmgBonus() + 2 * weapon.getDmgMod() * (1 + character.getBab() / 4);
+				}
+				case (""): {
+
+				}
+				}
+			}
+		}
+		case (1): {
+			for (String feat : character.getFeats()) {
+				switch (feat) {
+				}
+			}
+
+		}
+		case (2): {
+			for (String feat : character.getFeats()) {
+				switch (feat) {
+				}
+			}
+		}
+		case (3): {
+			for (String feat : character.getFeats()) {
+				switch (feat) {
+				case("Point-Blank Shot"):{
+					standardDmgBonus++;
+					break;
+				}
+				}
+			}
+		}
+		case (4): {
+			for (String feat : character.getFeats()) {
+				switch (feat) {
+				}
+			}
+		}
+		case (5): {
+			for (String feat : character.getFeats()) {
+				switch (feat) {
+				}
+			}
+		}
+		}
+		return standardDmgBonus;
+	}
+
+	private double determineHitBonus(PfCharacter character, Weapon weapon2, double hitMod) {
+		double standardHitBonus = character.getBab() + hitMod + weapon.getHitBonus();
+		switch (weapon.getType()) {
+		case (0): {
+			for (String feat : character.getFeats()) {
+				switch (feat) {
+				case ("Power Attack"): {
+					standardHitBonus += weapon.getHitBonus() - 1 - character.getBab() / 4;
+					break;
+				}
+				case (""):
+					;
+				}
+			}
+		}
+		case (1): {
+			for (String feat : character.getFeats()) {
+				switch (feat) {
+				}
+			}
+
+		}
+		case (2): {
+			for (String feat : character.getFeats()) {
+				switch (feat) {
+				}
+			}
+		}
+		case (3): {
+			for (String feat : character.getFeats()) {
+				switch (feat) {
+				case ("Rapid Shot"): {
+					standardHitBonus += -2;
+					break;
+				}
+				case ("Point-Blank Shot"): {
+					standardHitBonus++;
+					break;
+				}
+				}
+			}
+
+		}
+		case (4): {
+			for (String feat : character.getFeats()) {
+				switch (feat) {
+				}
+			}
+		}
+		case (5): {
+			for (String feat : character.getFeats()) {
+				switch (feat) {
+				}
+			}
+		}
+		}
+		return standardHitBonus;
+	}
+
+	private double determineHitMod(PfCharacter character) {
+		if (character.getFeats().contains("Weapon Finesse"))
+			return (character.getDex() - 10) / 2;
+		else
+			return (character.getStr() - 10) / 2;
 	}
 
 	private void initaliseSingleAttack(double hitBonus, double damageBonus) {
@@ -65,7 +178,8 @@ public class Attack {
 	/**
 	 * Adds the static attack modi.
 	 *
-	 * @param staticAttackBonus the static attack bonus
+	 * @param staticAttackBonus
+	 *            the static attack bonus
 	 */
 	public void addStaticAttackModi(double staticAttackBonus) {
 		for (int i = 0; i < attackModi.length; i++) {
@@ -76,7 +190,8 @@ public class Attack {
 	/**
 	 * Adds the static damage modi.
 	 *
-	 * @param staticDamageBonus the static damage bonus
+	 * @param staticDamageBonus
+	 *            the static damage bonus
 	 */
 	public void addStaticDamageModi(double staticDamageBonus) {
 		for (int i = 0; i < damageModi.length; i++) {
@@ -130,14 +245,25 @@ public class Attack {
 		return damageModi;
 	}
 
-	private int determineArraySize(int bab) {
-		if (bab < 5)
-			return 1;
-		if (bab >= 5 && bab < 10)
-			return 2;
-		if (bab >= 10 && bab < 15)
-			return 3;
-		return 4;
+	private int determineArraySize(PfCharacter character) {
+		int arraysize = 0;
+		if (character.getBab() < 5)
+			arraysize = 1;
+		if (character.getBab() >= 5 && character.getBab() < 10)
+			arraysize = 2;
+		if (character.getBab() >= 10 && character.getBab() < 15)
+			arraysize = 3;
+		for (String feat : character.getFeats()) {
+			switch (feat) {
+			case ("Rapid Shot"):
+				arraysize++;
+				break;
+			case ("Flury of Blows"):
+				arraysize += character.getBab() / 8 + 1;
+				break;
+			}
+		}
+		return arraysize;
 	}
 
 	/**

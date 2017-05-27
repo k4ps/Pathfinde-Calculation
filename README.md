@@ -12,16 +12,20 @@ Add Weapons and attacks to a character.
 
 Calculate the dpr for the current Full Round attack against an enemy with an inputtable ac
 
+Implemented Feats:
+- Weapon Finesse
+- Power Attack
+- Rapid Shot
+- Flury of Blows
+- Point-Blank Shot
+
 # TODO-List:
 - GUI & all actionListeners
 - feat implementation
 - feats to implement:
   - Arcane Strike
   - Critical Focus
-  - Flury of Blows
   - Medusa's Wrath
-  - Point-Blank Shot
-  - Rapidshot
   - Manyshot
   - Two-Weapon Fighting
   - Improved Two-Weapon Fighting
