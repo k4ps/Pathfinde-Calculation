@@ -1,0 +1,126 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.Choice;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+public class MainFrame extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainFrame frame = new MainFrame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public MainFrame() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 413, 310);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 11, 78, 207);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblCharacterName = new JLabel("Character:");
+		lblCharacterName.setBounds(10, 11, 62, 26);
+		panel.add(lblCharacterName);
+		
+		JLabel lblFullRounds = new JLabel("Full Rounds");
+		lblFullRounds.setBounds(10, 48, 68, 26);
+		panel.add(lblFullRounds);
+		
+		JLabel lblBuffs = new JLabel("Buffs");
+		lblBuffs.setBounds(10, 122, 46, 26);
+		panel.add(lblBuffs);
+		
+		JLabel lblEnemyAc = new JLabel("Enemy AC");
+		lblEnemyAc.setBounds(10, 85, 62, 26);
+		panel.add(lblEnemyAc);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(98, 11, 291, 207);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel label = new JLabel("");
+		label.setBounds(10, 11, 119, 26);
+		panel_1.add(label);
+		
+		JButton btnEditCharacter = new JButton("Edit Character");
+		btnEditCharacter.setBounds(139, 11, 119, 26);
+		panel_1.add(btnEditCharacter);
+		
+		Choice choice = new Choice();
+		choice.setBounds(10, 51, 248, 22);
+		panel_1.add(choice);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(10, 122, 248, 75);
+		panel_1.add(panel_2);
+		
+		JRadioButton rdbtnBuff = new JRadioButton("Buff 1");
+		panel_2.add(rdbtnBuff);
+		
+		JRadioButton rdbtnBuff_1 = new JRadioButton("Buff 2");
+		panel_2.add(rdbtnBuff_1);
+		
+		JRadioButton rdbtnBuff_2 = new JRadioButton("Buff 3");
+		panel_2.add(rdbtnBuff_2);
+		
+		JRadioButton rdbtnBuff_3 = new JRadioButton("Buff 4");
+		panel_2.add(rdbtnBuff_3);
+		
+		JRadioButton rdbtnBuff_4 = new JRadioButton("Buff 5");
+		panel_2.add(rdbtnBuff_4);
+		
+		JRadioButton rdbtnBuff_5 = new JRadioButton("Buff 6");
+		panel_2.add(rdbtnBuff_5);
+		
+		textField = new JTextField();
+		textField.setBounds(10, 85, 119, 26);
+		panel_1.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Add Full Round");
+		btnNewButton.setBounds(139, 85, 119, 26);
+		panel_1.add(btnNewButton);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(10, 229, 379, 36);
+		contentPane.add(panel_3);
+		
+		JButton btnCalculateDpr = new JButton("Calculate DPR");
+		panel_3.add(btnCalculateDpr);
+		
+		JButton btnSimulateFullRound = new JButton("Simulate Full Round");
+		panel_3.add(btnSimulateFullRound);
+	}
+}
