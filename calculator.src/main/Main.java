@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import attacks.FullRound;
 import calculations.Calculation;
 import characters.PfCharacter;
+import gui.MainFrame;
 import weapons.Weapon;
 
 // TODO: Auto-generated Javadoc
@@ -25,16 +26,19 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		PfCharacter testChar=new PfCharacter("testerino", 14, 26, 12);
+		PfCharacter testChar=new PfCharacter("Arathor", 14, 26, 12);
 		testChar.addFeat("Power Attack");
 		testChar.addWeapon(new Weapon("Falchion", new int[]{2,4}, 2, 6, 2, 0));
 		ArrayList<Weapon> weapons = new ArrayList<>();
 		weapons=testChar.getWeapons();
-		testChar.addFullRound("Test", weapons, true);
+		testChar.addFullRound("PA Full Round", weapons, true);
+		testChar.addFullRound("PA Single Attack", weapons, false);
 		
-		for(FullRound fullRound:testChar.getFullRounds()){
-			System.out.println("Dpr von " + fullRound.getName() + " = " + Calculation.calcDPR(fullRound, 20));
-		}
+		MainFrame.main(null, testChar);
+		
+		//for(FullRound fullRound:testChar.getFullRounds()){
+		//	System.out.println("Dpr von " + fullRound.getName() + " = " + Calculation.calcDPR(fullRound, 20));
+		//}
 	}
 
 }

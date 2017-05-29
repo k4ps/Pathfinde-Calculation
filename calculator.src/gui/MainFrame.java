@@ -10,6 +10,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import attacks.FullRound;
+import characters.PfCharacter;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Choice;
@@ -17,6 +21,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 // TODO: Auto-generated Javadoc
+// TODO: Output panel
 /**
  * The Class MainFrame.
  */
@@ -26,18 +31,20 @@ public class MainFrame extends JFrame {
 	private JPanel contentPane;
 	
 	/** The text field. */
-	private JTextField textField;
+	private JTextField acTextField;
+	
+	private PfCharacter character;
 
 	/**
 	 * Launch the application.
 	 *
 	 * @param args the arguments
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args, PfCharacter character) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame();
+					MainFrame frame = new MainFrame(character);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +56,8 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainFrame() {
+	public MainFrame(PfCharacter character) {
+		this.character=character;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 413, 310);
 		contentPane = new JPanel();
@@ -83,17 +91,20 @@ public class MainFrame extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel label = new JLabel("");
-		label.setBounds(10, 11, 119, 26);
-		panel_1.add(label);
+		JLabel characterNameLabel = new JLabel(character.getName());
+		characterNameLabel.setBounds(10, 11, 119, 26);
+		panel_1.add(characterNameLabel);
 		
 		JButton btnEditCharacter = new JButton("Edit Character");
 		btnEditCharacter.setBounds(139, 11, 119, 26);
 		panel_1.add(btnEditCharacter);
 		
-		Choice choice = new Choice();
-		choice.setBounds(10, 51, 248, 22);
-		panel_1.add(choice);
+		Choice fullRoundChoice = new Choice();
+		fullRoundChoice.setBounds(10, 51, 248, 22);
+		for(FullRound fullround:character.getFullRounds()){
+			fullRoundChoice.add(fullround.getName());
+		}
+		panel_1.add(fullRoundChoice);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(10, 122, 248, 75);
@@ -117,14 +128,14 @@ public class MainFrame extends JFrame {
 		JRadioButton rdbtnBuff_5 = new JRadioButton("Buff 6");
 		panel_2.add(rdbtnBuff_5);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 85, 119, 26);
-		panel_1.add(textField);
-		textField.setColumns(10);
+		acTextField = new JTextField();
+		acTextField.setBounds(10, 85, 119, 26);
+		panel_1.add(acTextField);
+		acTextField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Add Full Round");
-		btnNewButton.setBounds(139, 85, 119, 26);
-		panel_1.add(btnNewButton);
+		JButton btnAddFullRound = new JButton("Add Full Round");
+		btnAddFullRound.setBounds(139, 85, 119, 26);
+		panel_1.add(btnAddFullRound);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(10, 229, 379, 36);

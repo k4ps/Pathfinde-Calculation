@@ -134,7 +134,7 @@ public class Attack {
 			for (String feat : character.getFeats()) {
 				switch (feat) {
 				case ("Power Attack"): {
-					standardHitBonus += weapon.getHitBonus() - 1 - character.getBab() / 4;
+					standardHitBonus += - 1 - character.getBab() / 4;
 					break;
 				}
 				case (""):

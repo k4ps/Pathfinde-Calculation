@@ -21,7 +21,7 @@ Implemented Feats:
 
 # TODO-List:
 - GUI & all actionListeners
-- feat implementation
+- feat implementation in FullRound.java
 - feats to implement:
   - Arcane Strike
   - Critical Focus

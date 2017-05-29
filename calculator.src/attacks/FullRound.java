@@ -8,6 +8,7 @@ package attacks;
 import java.util.ArrayList;
 
 // TODO: Auto-generated Javadoc
+// TODO: Implement feats here, not in Attack.java
 /**
  * The Class FullRound.
  */
