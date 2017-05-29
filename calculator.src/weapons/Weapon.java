@@ -296,4 +296,8 @@ public class Weapon {
 		return true;
 	}
 
+	public void setType(int type) {
+		this.type = type;
+	}
+
 }

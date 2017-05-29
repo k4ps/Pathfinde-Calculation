@@ -57,6 +57,8 @@ public class MainFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public MainFrame(PfCharacter character) {
+		setResizable(false);
+		setTitle("Pathfinder Calculator");
 		this.character=character;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 413, 310);
