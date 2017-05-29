@@ -12,7 +12,11 @@ import java.util.ArrayList;
  * The Class FullRound.
  */
 public class FullRound {
+	
+	/** The attacks. */
 	private ArrayList<Attack> attacks = new ArrayList<>();
+	
+	/** The name. */
 	private String name;
 	
 	/**

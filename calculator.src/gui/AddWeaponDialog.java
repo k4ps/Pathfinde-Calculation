@@ -28,7 +28,10 @@ import java.awt.event.MouseEvent;
  */
 public class AddWeaponDialog extends JDialog {
 
+	/** The content panel. */
 	private final JPanel contentPanel = new JPanel();
+	
+	/** The weapon. */
 	private Weapon weapon = new Weapon();
 
 	/**

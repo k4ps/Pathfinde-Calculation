@@ -15,11 +15,23 @@ import weapons.*;
  * The Class Attack.
  */
 public class Attack {
+	
+	/** The attack modi. */
 	private double[] attackModi;
+	
+	/** The damage modi. */
 	private double[] damageModi;
+	
+	/** The weapon. */
 	private Weapon weapon;
+	
+	/** The weapon name. */
 	private String weaponName;
+	
+	/** The full round. */
 	private boolean fullRound;
+	
+	/** The precision dmg dice. */
 	private ArrayList<int[]> precisionDmgDice = new ArrayList<>();
 
 	/**
@@ -45,6 +57,14 @@ public class Attack {
 		}
 	}
 
+	/**
+	 * Determine dmg bonus.
+	 *
+	 * @param character the character
+	 * @param weapon2 the weapon 2
+	 * @param hitMod the hit mod
+	 * @return the double
+	 */
 	private double determineDmgBonus(PfCharacter character, Weapon weapon2, double hitMod) {
 		double standardDmgBonus = ((character.getStr() - 10) / 2) * weapon.getDmgMod() + weapon.getDmgBonus();
 		switch (weapon.getType()) {
@@ -99,6 +119,14 @@ public class Attack {
 		return standardDmgBonus;
 	}
 
+	/**
+	 * Determine hit bonus.
+	 *
+	 * @param character the character
+	 * @param weapon2 the weapon 2
+	 * @param hitMod the hit mod
+	 * @return the double
+	 */
 	private double determineHitBonus(PfCharacter character, Weapon weapon2, double hitMod) {
 		double standardHitBonus = character.getBab() + hitMod + weapon.getHitBonus();
 		switch (weapon.getType()) {
@@ -158,6 +186,12 @@ public class Attack {
 		return standardHitBonus;
 	}
 
+	/**
+	 * Determine hit mod.
+	 *
+	 * @param character the character
+	 * @return the double
+	 */
 	private double determineHitMod(PfCharacter character) {
 		if (character.getFeats().contains("Weapon Finesse"))
 			return (character.getDex() - 10) / 2;
@@ -165,12 +199,25 @@ public class Attack {
 			return (character.getStr() - 10) / 2;
 	}
 
+	/**
+	 * Initalise single attack.
+	 *
+	 * @param hitBonus the hit bonus
+	 * @param damageBonus the damage bonus
+	 */
 	private void initaliseSingleAttack(double hitBonus, double damageBonus) {
 		attackModi = new double[] { hitBonus };
 		damageModi = new double[] { damageBonus };
 
 	}
 
+	/**
+	 * Initalise full round.
+	 *
+	 * @param arraySize the array size
+	 * @param hitBonus the hit bonus
+	 * @param damageBonus the damage bonus
+	 */
 	private void initaliseFullRound(int arraySize, double hitBonus, double damageBonus) {
 		attackModi = new double[arraySize];
 		damageModi = new double[arraySize];
@@ -252,6 +299,12 @@ public class Attack {
 		return damageModi;
 	}
 
+	/**
+	 * Determine array size.
+	 *
+	 * @param character the character
+	 * @return the int
+	 */
 	private int determineArraySize(PfCharacter character) {
 		int arraysize = 0;
 		if (character.getBab() < 5)

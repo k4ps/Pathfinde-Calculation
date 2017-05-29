@@ -16,12 +16,26 @@ import weapons.Weapon;
  * The Class PfCharacter.
  */
 public class PfCharacter {
+	
+	/** The name. */
 	private String name;
+	
+	/** The bab. */
 	private int bab;
+	
+	/** The str. */
 	private int str;
+	
+	/** The dex. */
 	private int dex;
+	
+	/** The full rounds. */
 	private ArrayList<FullRound> fullRounds = new ArrayList<>();
+	
+	/** The weapons. */
 	private ArrayList<Weapon> weapons = new ArrayList<>();
+	
+	/** The feats. */
 	private ArrayList<String> feats = new ArrayList<>();
 
 	/**

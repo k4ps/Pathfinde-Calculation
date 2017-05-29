@@ -14,8 +14,14 @@ import weapons.Weapon;
  * The Class Calculation.
  */
 public class Calculation {
+	
+	/** The full round. */
 	static private FullRound fullRound;
+	
+	/** The weapon. */
 	static private Weapon weapon;
+	
+	/** The ac. */
 	static int ac;
 
 	/**
@@ -67,22 +73,48 @@ public class Calculation {
 		return dpr;
 	}
 
+	/**
+	 * Determine hit chance.
+	 *
+	 * @param ac2 the ac 2
+	 * @param attackModifier the attack modifier
+	 * @return the double
+	 */
 	private static double determineHitChance(int ac2, double attackModifier) {
 		if(attackModifier>=ac2-2) return 0.95;
 		if(attackModifier+20<ac2) return 0.05;
 		return (20.00 - (ac - attackModifier - 1)) / 20.00;		
 	}
 
+	/**
+	 * Calc average bonus crit damage.
+	 *
+	 * @param attack2 the attack 2
+	 * @return the double
+	 */
 	private static double calcAverageBonusCritDamage(Attack attack2) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/**
+	 * Calc average precision damge.
+	 *
+	 * @param weapon2 the weapon 2
+	 * @param attack2 the attack 2
+	 * @return the double
+	 */
 	private static double calcAveragePrecisionDamge(Weapon weapon2, Attack attack2) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/**
+	 * Calc average dice damage.
+	 *
+	 * @param weapon2 the weapon 2
+	 * @return the double
+	 */
 	private static double calcAverageDiceDamage(Weapon weapon2) {
 		int[] dmgDice = weapon2.getDmgDice();
 		double averageDmg = 0.0;

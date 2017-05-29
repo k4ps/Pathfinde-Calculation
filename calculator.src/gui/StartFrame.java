@@ -19,6 +19,7 @@ import javax.swing.JButton;
  */
 public class StartFrame extends JFrame {
 
+	/** The content pane. */
 	private JPanel contentPane;
 
 	/**

@@ -13,15 +13,35 @@ import java.util.ArrayList;
  */
 // TODO: Auto-generated Javadoc
 public class Weapon {
+	
+	/** The name. */
 	private String name;
+	
+	/** The dmg dice. */
 	private int[] dmgDice = new int[2];
+	
+	/** The precision dmg dice. */
 	private ArrayList<int[]> precisionDmgDice = new ArrayList<>();
+	
+	/** The specials. */
 	private ArrayList<String> specials = new ArrayList<>();
+	
+	/** The crit multiplier. */
 	private int critMultiplier;
+	
+	/** The crit range. */
 	private int critRange;
+	
+	/** The hit bonus. */
 	private int hitBonus;
+	
+	/** The dmg bonus. */
 	private int dmgBonus;
+	
+	/** The dmg mod. */
 	private double dmgMod;
+	
+	/** The type. */
 	private int type;
 
 	/**
@@ -124,6 +144,9 @@ public class Weapon {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Determine specials effect.
+	 */
 	private void determineSpecialsEffect() {
 		// TODO Auto-generated method stub
 		for (String special : specials) {
@@ -134,6 +157,9 @@ public class Weapon {
 
 	}
 
+	/**
+	 * Determine dmg mod.
+	 */
 	private void determineDmgMod() {
 		if (type == 0)
 			dmgMod = 1.5;
