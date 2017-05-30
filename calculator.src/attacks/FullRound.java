@@ -44,6 +44,8 @@ public class FullRound {
 	public FullRound(String name, PfCharacter character, ArrayList<Weapon> usedWeapons, boolean fullRound, boolean ifTwoHandedPossibleDoTwoHanded){
 		this.name=name + " mit: ";
 		determineFullRoundType(usedWeapons);
+		int dmgBonus = determineDmgBonus(character);
+		int hitBonus = determineHitBonus(character);
 		for(Weapon weapon:usedWeapons){
 			if(fullRoundType == 1 && weapon.getType()==1 && ifTwoHandedPossibleDoTwoHanded) weapon.setDmgMod(1.5);
 			this.addAttack(new Attack(character, weapon, fullRound));
@@ -51,6 +53,19 @@ public class FullRound {
 		
 	}
 	
+	private int determineHitBonus(PfCharacter character) {
+		// TODO Auto-generated method stub
+		switch(fullRoundType){
+		
+		}
+		return 0;
+	}
+
+	private int determineDmgBonus(PfCharacter character) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	/**
 	 * Adds the attack.
 	 *
