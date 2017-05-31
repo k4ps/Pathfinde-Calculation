@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -61,6 +63,13 @@ public class StartFrame extends JFrame {
 		
 		//clicking this button will open the CharacterCreationDialog and dispose this frame.
 		JButton btnNewCharacter = new JButton("New Character");
+		btnNewCharacter.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CharacterCreationFrame.main(null);
+				dispose();
+			}
+		});
 		panel.add(btnNewCharacter);
 		
 		//clicking this button will open a data manager to load a character. Upon selection of one, it will open the mainframe with the selected character and dispose this frame.

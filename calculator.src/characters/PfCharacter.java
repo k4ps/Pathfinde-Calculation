@@ -57,6 +57,10 @@ public class PfCharacter {
 		this.dex = dex;
 	}
 
+	public PfCharacter() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * Adds the full round.
 	 *
@@ -114,6 +118,34 @@ public class PfCharacter {
 	 */
 	public void addWeapon(Weapon weapon) {
 		weapons.add(weapon);
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setBab(int bab) {
+		this.bab = bab;
+	}
+
+	public void setStr(int str) {
+		this.str = str;
+	}
+
+	public void setDex(int dex) {
+		this.dex = dex;
+	}
+
+	public void setFullRounds(ArrayList<FullRound> fullRounds) {
+		this.fullRounds = fullRounds;
+	}
+
+	public void setWeapons(ArrayList<Weapon> weapons) {
+		this.weapons = weapons;
+	}
+
+	public void setFeats(ArrayList<String> feats) {
+		this.feats = feats;
 	}
 
 	/**
