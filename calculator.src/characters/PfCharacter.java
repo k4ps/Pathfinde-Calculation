@@ -30,7 +30,7 @@ public class PfCharacter {
 	private int dex;
 	
 	/** The full rounds. */
-	private ArrayList<FullRound> fullRounds = new ArrayList<>();
+ 	private ArrayList<FullRound> fullRounds = new ArrayList<>();
 	
 	/** The weapons. */
 	private ArrayList<Weapon> weapons = new ArrayList<>();
@@ -50,7 +50,7 @@ public class PfCharacter {
 	 * @param dex
 	 *            the dex
 	 */
-	public PfCharacter(String name, int bab, int str, int dex) {
+	public PfCharacter(String name, int bab, int dex, int str) {
 		this.name = name;
 		this.bab = bab;
 		this.str = str;

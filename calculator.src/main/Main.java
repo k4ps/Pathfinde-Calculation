@@ -44,7 +44,7 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		StartFrame.main(args);
+		Filesystem.load("arathor.txt");
 	}
 
 }

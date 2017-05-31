@@ -282,6 +282,30 @@ public class Weapon {
 		this.dmgMod = dmgMod;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDmgDice(int[] dmgDice) {
+		this.dmgDice = dmgDice;
+	}
+
+	public void setPrecisionDmgDice(ArrayList<int[]> precisionDmgDice) {
+		this.precisionDmgDice = precisionDmgDice;
+	}
+
+	public void setSpecials(ArrayList<String> specials) {
+		this.specials = specials;
+	}
+
+	public void setCritMultiplier(int critMultiplier) {
+		this.critMultiplier = critMultiplier;
+	}
+
+	public void setCritRange(int critRange) {
+		this.critRange = critRange;
+	}
+
 	/**
 	 * Adds the special.
 	 *
