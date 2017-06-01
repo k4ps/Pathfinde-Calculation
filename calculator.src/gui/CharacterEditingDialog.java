@@ -23,7 +23,7 @@ import characters.PfCharacter;
 
 public class CharacterEditingDialog extends JDialog {
 
-	private final JPanel contentPanel = new JPanel();
+	private final JPanel characterEditingPanel = new JPanel();
 	
 	/** The text field. */
 	private JTextField nameField;
@@ -67,58 +67,58 @@ public class CharacterEditingDialog extends JDialog {
 		setTitle("Character Editing");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 402, 451);
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPanel);
-		contentPanel.setLayout(null);
+		characterEditingPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(characterEditingPanel);
+		characterEditingPanel.setLayout(null);
 
-		JPanel panel = new JPanel();
-		panel.setBounds(12, 12, 78, 202);
-		contentPanel.add(panel);
-		panel.setLayout(null);
+		JPanel characterEditingPanel_1 = new JPanel();
+		characterEditingPanel_1.setBounds(12, 12, 78, 202);
+		characterEditingPanel.add(characterEditingPanel_1);
+		characterEditingPanel_1.setLayout(null);
 
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(12, 12, 55, 22);
-		panel.add(lblName);
+		characterEditingPanel_1.add(lblName);
 
 		JLabel lblBab = new JLabel("BAB");
 		lblBab.setBounds(12, 47, 55, 22);
-		panel.add(lblBab);
+		characterEditingPanel_1.add(lblBab);
 
 		JLabel lblDex = new JLabel("Dex");
 		lblDex.setBounds(12, 82, 55, 22);
-		panel.add(lblDex);
+		characterEditingPanel_1.add(lblDex);
 
 		JLabel lblStr = new JLabel("Str");
 		lblStr.setBounds(12, 117, 55, 22);
-		panel.add(lblStr);
+		characterEditingPanel_1.add(lblStr);
 
 		JLabel lblFeats = new JLabel("Feats");
 		lblFeats.setBounds(12, 152, 55, 22);
-		panel.add(lblFeats);
+		characterEditingPanel_1.add(lblFeats);
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(102, 12, 281, 311);
-		contentPanel.add(panel_1);
-		panel_1.setLayout(null);
+		JPanel characterEditingPanel_2 = new JPanel();
+		characterEditingPanel_2.setBounds(102, 12, 281, 311);
+		characterEditingPanel.add(characterEditingPanel_2);
+		characterEditingPanel_2.setLayout(null);
 
 		nameField = new JTextField(character.getName());
 		nameField.setBounds(12, 12, 162, 22);
-		panel_1.add(nameField);
+		characterEditingPanel_2.add(nameField);
 		nameField.setColumns(10);
 
 		babField = new JTextField(String.valueOf(character.getBab()));
 		babField.setBounds(12, 47, 60, 22);
-		panel_1.add(babField);
+		characterEditingPanel_2.add(babField);
 		babField.setColumns(10);
 
 		dexField = new JTextField(String.valueOf(character.getDex()));
 		dexField.setBounds(12, 82, 60, 22);
-		panel_1.add(dexField);
+		characterEditingPanel_2.add(dexField);
 		dexField.setColumns(10);
 
 		strField = new JTextField(String.valueOf(character.getStr()));
 		strField.setBounds(12, 117, 60, 22);
-		panel_1.add(strField);
+		characterEditingPanel_2.add(strField);
 		strField.setColumns(10);
 
 		Choice featChoice = new Choice();
@@ -127,14 +127,14 @@ public class CharacterEditingDialog extends JDialog {
 				featChoice.add(feat);
 		}
 		featChoice.setBounds(12, 152, 162, 22);
-		panel_1.add(featChoice);
+		characterEditingPanel_2.add(featChoice);
 
 		List list = new List();
 		list.setBounds(12, 187, 162, 98);
 		for (String feat : editedCharacter.getFeats()) {
 			list.add(feat);
 		}
-		panel_1.add(list);
+		characterEditingPanel_2.add(list);
 
 		JButton btnAddFeat = new JButton("Add Feat");
 		btnAddFeat.addMouseListener(new MouseAdapter() {
@@ -146,7 +146,7 @@ public class CharacterEditingDialog extends JDialog {
 			}
 		});
 		btnAddFeat.setBounds(186, 152, 83, 22);
-		panel_1.add(btnAddFeat);
+		characterEditingPanel_2.add(btnAddFeat);
 
 		JButton btnDeleteFeat = new JButton("Remove Feat");
 		btnDeleteFeat.addMouseListener(new MouseAdapter() {
@@ -158,12 +158,12 @@ public class CharacterEditingDialog extends JDialog {
 			}
 		});
 		btnDeleteFeat.setBounds(186, 187, 83, 22);
-		panel_1.add(btnDeleteFeat);
+		characterEditingPanel_2.add(btnDeleteFeat);
 
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(12, 334, 371, 36);
-		contentPanel.add(panel_2);
-		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel characterEditingPanel_3 = new JPanel();
+		characterEditingPanel_3.setBounds(12, 334, 371, 36);
+		characterEditingPanel.add(characterEditingPanel_3);
+		characterEditingPanel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		JButton btnCreateCharacter = new JButton("Edit Character");
 		btnCreateCharacter.addMouseListener(new MouseAdapter() {
@@ -177,7 +177,7 @@ public class CharacterEditingDialog extends JDialog {
 				dispose();
 			}
 		});
-		panel_2.add(btnCreateCharacter);
+		characterEditingPanel_3.add(btnCreateCharacter);
 
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addMouseListener(new MouseAdapter() {
@@ -187,9 +187,9 @@ public class CharacterEditingDialog extends JDialog {
 				dispose();
 			}
 		});
-		panel_2.add(btnCancel);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { contentPanel, panel, lblName, lblBab, lblDex,
-				lblStr, lblFeats, panel_1, nameField, babField, dexField, strField, btnAddFeat }));
+		characterEditingPanel_3.add(btnCancel);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { characterEditingPanel, characterEditingPanel_1, lblName, lblBab, lblDex,
+				lblStr, lblFeats, characterEditingPanel_2, nameField, babField, dexField, strField, btnAddFeat }));
 	}
 
 }

@@ -31,6 +31,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JFileChooser;
 import java.awt.Color;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -77,7 +79,7 @@ public class MainFrame extends JFrame {
 		setResizable(false);
 		setTitle("Pathfinder Calculator");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 545, 448);
+		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -101,7 +103,7 @@ public class MainFrame extends JFrame {
 		panel.add(lblBuffs);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(96, 35, 431, 167);
+		panel_1.setBounds(100, 35, 431, 167);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
@@ -176,11 +178,11 @@ public class MainFrame extends JFrame {
 		outputTextArea.setForeground(new Color(51, 51, 51));
 		outputTextArea.setBackground(new Color(255, 255, 255));
 		outputTextArea.setEditable(false);
-		outputTextArea.setBounds(10, 262, 519, 139);
+		outputTextArea.setBounds(10, 544, 519, 139);
 		contentPane.add(outputTextArea);
 
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(10, 214, 519, 36);
+		panel_3.setBounds(541, 647, 519, 36);
 		contentPane.add(panel_3);
 
 		JButton btnCalculateDpr = new JButton("Calculate DPR");
@@ -203,7 +205,7 @@ public class MainFrame extends JFrame {
 		panel_3.add(btnSimulateFullRound);
 
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 539, 23);
+		menuBar.setBounds(0, 0, this.getBounds().width-2, 26);
 		contentPane.add(menuBar);
 
 		JMenu mnDatei = new JMenu("File");
@@ -230,6 +232,11 @@ public class MainFrame extends JFrame {
 			}
 		});
 		mnDatei.add(mntmSave);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBounds(803, 38, 459, 570);
+		contentPane.add(panel_4);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane, panel, lblCharacterName, lblFullRounds, lblBuffs, panel_1, characterNameLabel, fullRoundChoice, panel_2, rdbtnBuff, rdbtnBuff_1, rdbtnBuff_2, rdbtnBuff_3, rdbtnBuff_4, rdbtnBuff_5, acTextField, lblEnemyAc, outputTextArea, panel_3, btnAddFullRound, btnEditCharacter, btnCalculateDpr, btnSimulateFullRound, menuBar, mnDatei, mntmOpen, mntmSave, panel_4}));
 	}
 
 	private FullRound getFullRoundByName(PfCharacter character, Choice fullRoundChoice) {
