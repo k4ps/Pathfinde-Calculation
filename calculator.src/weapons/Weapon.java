@@ -208,6 +208,10 @@ public class Weapon {
 		return precisionDmgDice;
 	}
 
+	public ArrayList<String> getSpecials() {
+		return specials;
+	}
+
 	/**
 	 * Gets the crit multiplier.
 	 *

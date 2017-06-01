@@ -38,6 +38,5 @@ Implemented Feats:
 - precision damage (sneak attack, keen, etc)
 - bonus damage on crit (from feats)
 - class features that alter attack and damage (smite, challenge)
-- Loading and saving characters
 - reading a list of Weapons&special abilites from file
 - add buffs and implement their effect on dpr

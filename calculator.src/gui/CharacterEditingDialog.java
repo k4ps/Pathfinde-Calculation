@@ -3,15 +3,14 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Choice;
 import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,13 +20,11 @@ import javax.swing.border.EmptyBorder;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import characters.PfCharacter;
-import javax.swing.SwingConstants;
 
-public class CharacterEditingFrame extends JFrame {
+public class CharacterEditingDialog extends JDialog {
 
-	/** The content pane. */
-	private JPanel contentPane;
-
+	private final JPanel contentPanel = new JPanel();
+	
 	/** The text field. */
 	private JTextField nameField;
 
@@ -42,41 +39,41 @@ public class CharacterEditingFrame extends JFrame {
 
 	private static ArrayList<String> implementedFeats = new ArrayList<>();
 	private ArrayList<String> newFeatList = new ArrayList<>();
+	
+	private static PfCharacter editedCharacter;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(PfCharacter character) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					getImplementedFeats();
-					CharacterEditingFrame frame = new CharacterEditingFrame(character);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static PfCharacter main(PfCharacter character) {
+		try {
+			CharacterEditingDialog dialog = new CharacterEditingDialog(character);
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return editedCharacter;
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the dialog.
+	 * @param character 
 	 */
-	public CharacterEditingFrame(PfCharacter character) {
-		PfCharacter editedCharacter = character;
+	public CharacterEditingDialog(PfCharacter character) {
+		setModal(true);
+		editedCharacter=character;
 		newFeatList=character.getFeats();
 		setTitle("Character Editing");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 402, 451);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPanel);
+		contentPanel.setLayout(null);
 
 		JPanel panel = new JPanel();
 		panel.setBounds(12, 12, 78, 202);
-		contentPane.add(panel);
+		contentPanel.add(panel);
 		panel.setLayout(null);
 
 		JLabel lblName = new JLabel("Name");
@@ -101,7 +98,7 @@ public class CharacterEditingFrame extends JFrame {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(102, 12, 281, 311);
-		contentPane.add(panel_1);
+		contentPanel.add(panel_1);
 		panel_1.setLayout(null);
 
 		nameField = new JTextField(character.getName());
@@ -165,7 +162,7 @@ public class CharacterEditingFrame extends JFrame {
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(12, 334, 371, 36);
-		contentPane.add(panel_2);
+		contentPanel.add(panel_2);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		JButton btnCreateCharacter = new JButton("Edit Character");
@@ -177,7 +174,6 @@ public class CharacterEditingFrame extends JFrame {
 				editedCharacter.setStr(Integer.parseInt(strField.getText()));
 				editedCharacter.setDex(Integer.parseInt(dexField.getText()));
 				editedCharacter.setFeats(newFeatList);
-				MainFrame.main(null, editedCharacter);
 				dispose();
 			}
 		});
@@ -187,22 +183,13 @@ public class CharacterEditingFrame extends JFrame {
 		btnCancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MainFrame.main(null, character);
+				editedCharacter = character;
 				dispose();
 			}
 		});
 		panel_2.add(btnCancel);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { contentPane, panel, lblName, lblBab, lblDex,
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { contentPanel, panel, lblName, lblBab, lblDex,
 				lblStr, lblFeats, panel_1, nameField, babField, dexField, strField, btnAddFeat }));
-	}
-
-	private static void getImplementedFeats() {
-		implementedFeats.add("Weapon Finesse");
-		implementedFeats.add("Power Attack");
-		implementedFeats.add("Rapid Shot");
-		implementedFeats.add("Flury of Blows");
-		implementedFeats.add("Point-Blank Shot");
-		Collections.sort(implementedFeats);
 	}
 
 }

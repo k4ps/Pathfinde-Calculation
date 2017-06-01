@@ -211,4 +211,9 @@ public class PfCharacter {
 		return weapons;
 	}
 
+	public void addFullRound(FullRound readFullRound) {
+		fullRounds.add(readFullRound);
+		
+	}
+
 }

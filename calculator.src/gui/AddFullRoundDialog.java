@@ -14,6 +14,8 @@ import weapons.Weapon;
 import javax.swing.JList;
 import java.awt.List;
 import java.awt.Button;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AddFullRoundDialog extends JDialog {
 
@@ -54,15 +56,20 @@ public class AddFullRoundDialog extends JDialog {
 		
 		List list = new List();
 		list.setBounds(10, 10, 214, 94);
-		panel_1.add(list);
-		
-		JButton btnAddWeapon = new JButton("Add Weapon");
-		btnAddWeapon.setBounds(189, 118, 118, 26);
-		panel_1.add(btnAddWeapon);
 		for(Weapon weapon:character.getWeapons()){
 			list.add(weapon.getName());
 		}
+		panel_1.add(list);
 		
+		JButton btnAddWeapon = new JButton("Add Weapon");
+		btnAddWeapon.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				AddWeaponDialog.main(null);
+			}
+		});
+		btnAddWeapon.setBounds(189, 118, 118, 26);
+		panel_1.add(btnAddWeapon);
 		
 		{
 			JPanel buttonPane = new JPanel();

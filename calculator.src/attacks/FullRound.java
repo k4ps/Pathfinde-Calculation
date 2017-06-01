@@ -21,6 +21,8 @@ public class FullRound {
 	private ArrayList<Attack> attacks = new ArrayList<>();
 	
 	/** The name. */
+	private String description;
+	
 	private String name;
 	
 	/** Integer describing what kind of fullround it is. 
@@ -38,11 +40,12 @@ public class FullRound {
 	 * @param name the name
 	 */
 	public FullRound(String name){
-		this.name=name + " mit: ";
+		this.name=name;
+		this.description=name + " mit: ";
 	}
 	
 	public FullRound(String name, PfCharacter character, ArrayList<Weapon> usedWeapons, boolean fullRound, boolean ifTwoHandedPossibleDoTwoHanded){
-		this.name=name + " mit: ";
+		this.description=name + " mit: ";
 		determineFullRoundType(usedWeapons);
 		int dmgBonus = determineDmgBonus(character);
 		int hitBonus = determineHitBonus(character);
@@ -53,6 +56,10 @@ public class FullRound {
 		
 	}
 	
+	public FullRound() {
+		// TODO Auto-generated constructor stub
+	}
+
 	private int determineHitBonus(PfCharacter character) {
 		// TODO Auto-generated method stub
 		switch(fullRoundType){
@@ -72,9 +79,9 @@ public class FullRound {
 	 * @param attack the attack
 	 */
 	public void addAttack(Attack attack){
-		if(!attacks.isEmpty()) name = name + ", ";
+		if(!attacks.isEmpty()) description = description + ", ";
 		attacks.add(attack);
-		name = name+attack.getWeaponName();
+		description = description+attack.getWeaponName();
 	}
 	
 	/**
@@ -91,12 +98,16 @@ public class FullRound {
 	 *
 	 * @return the name
 	 */
-	public String getName(){
-		return name;
+	public String getDescription(){
+		return description;
 	}
 
 	public int getFullRoundType() {
 		return fullRoundType;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public void determineFullRoundType(ArrayList<Weapon> usedWeapons) {

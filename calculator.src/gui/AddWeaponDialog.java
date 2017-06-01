@@ -21,6 +21,10 @@ import java.awt.Choice;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -53,7 +57,7 @@ public class AddWeaponDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public AddWeaponDialog() {
-		setBounds(100, 100, 697, 241);
+		setBounds(100, 100, 766, 241);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -81,12 +85,13 @@ public class AddWeaponDialog extends JDialog {
 		panel_1.add(lblEnhancement);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(126, 11, 545, 149);
+		panel_2.setBorder(null);
+		panel_2.setBounds(126, 11, 612, 149);
 		contentPanel.add(panel_2);
 		panel_2.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 525, 33);
+		panel.setBounds(10, 11, 590, 33);
 		panel_2.add(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
@@ -107,15 +112,16 @@ public class AddWeaponDialog extends JDialog {
 		
 		JRadioButton secondaryNaturalButton = new JRadioButton("Secondary Natural");
 		panel.add(secondaryNaturalButton);
+		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{twoHButton, oneHButton, offHButton, rangeButton, primaryNaturalButton, secondaryNaturalButton}));
 		
 		Choice choice = new Choice();
-		choice.setBounds(10, 50, 525, 27);
+		choice.setBounds(10, 50, 590, 22);
 		panel_2.add(choice);
 		
 		JPanel panel_3 = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel_3.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
-		panel_3.setBounds(10, 76, 525, 33);
+		panel_3.setBounds(10, 76, 590, 33);
 		panel_2.add(panel_3);
 		
 		JRadioButton rdbtnNormal = new JRadioButton("Normal");
@@ -140,11 +146,11 @@ public class AddWeaponDialog extends JDialog {
 		panel_3.add(radioButton_4);
 		
 		JButton btnAddSpecial = new JButton("Add Special");
-		btnAddSpecial.setBounds(428, 115, 107, 22);
+		btnAddSpecial.setBounds(493, 115, 107, 22);
 		panel_2.add(btnAddSpecial);
 		
 		Choice choice_1 = new Choice();
-		choice_1.setBounds(10, 115, 412, 22);
+		choice_1.setBounds(10, 115, 477, 22);
 		panel_2.add(choice_1);
 		{
 			JPanel buttonPane = new JPanel();

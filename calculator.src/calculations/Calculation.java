@@ -52,8 +52,8 @@ public class Calculation {
 		double dpr = 0;
 		for (Attack attack : fullRound.getAttacks()) {
 			Calculation.weapon = attack.getWeapon();
-			double[] attackModifiers = attack.getAttackModi();
-			double[] damageModifiers = attack.getDamageModi();
+			int[] attackModifiers = attack.getAttackModi();
+			int[] damageModifiers = attack.getDamageModi();
 			double hitchance;
 			double critchance = weapon.getCritRange() / 20.00;
 			double averageDiceDamage = calcAverageDiceDamage(weapon);

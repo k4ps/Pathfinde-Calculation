@@ -17,10 +17,10 @@ import weapons.*;
 public class Attack {
 	
 	/** The attack modi. */
-	private double[] attackModi;
+	private int[] attackModi;
 	
 	/** The damage modi. */
-	private double[] damageModi;
+	private int[] damageModi;
 	
 	/** The weapon. */
 	private Weapon weapon;
@@ -46,8 +46,8 @@ public class Attack {
 		int arraySize = determineArraySize(character);
 		this.weapon = weapon;
 		this.fullRound = fullRound;
-		double hitBonus = determineHitBonus(character, weapon, hitMod);
-		double damageBonus = determineDmgBonus(character, weapon, hitMod);
+		int hitBonus = determineHitBonus(character, weapon, hitMod);
+		int damageBonus = determineDmgBonus(character, weapon, hitMod);
 		weaponName = weapon.getName();
 
 		if (fullRound)
@@ -69,10 +69,11 @@ public class Attack {
 	 * @param hitMod the hit mod
 	 * @return the double
 	 */
-	private double determineDmgBonus(PfCharacter character, Weapon weapon2, double hitMod) {
-		double standardDmgBonus = ((character.getStr() - 10) / 2) * weapon.getDmgMod() + weapon.getDmgBonus();
+	private int determineDmgBonus(PfCharacter character, Weapon weapon2, double hitMod) {
+		double standardDmgBonus = weapon.getDmgBonus();
 		switch (weapon.getType()) {
 		case (0): {
+			standardDmgBonus += ((character.getStr() - 10) / 2) * weapon.getDmgMod();
 			for (String feat : character.getFeats()) {
 				switch (feat) {
 				case ("Power Attack"): {
@@ -85,6 +86,7 @@ public class Attack {
 			}
 		}
 		case (1): {
+			standardDmgBonus += ((character.getStr() - 10) / 2) * weapon.getDmgMod();
 			for (String feat : character.getFeats()) {
 				switch (feat) {
 				}
@@ -92,6 +94,7 @@ public class Attack {
 
 		}
 		case (2): {
+			standardDmgBonus += ((character.getStr() - 10) / 2) * weapon.getDmgMod();
 			for (String feat : character.getFeats()) {
 				switch (feat) {
 				}
@@ -108,19 +111,21 @@ public class Attack {
 			}
 		}
 		case (4): {
+			standardDmgBonus += ((character.getStr() - 10) / 2) * weapon.getDmgMod();
 			for (String feat : character.getFeats()) {
 				switch (feat) {
 				}
 			}
 		}
 		case (5): {
+			standardDmgBonus += ((character.getStr() - 10) / 2) * weapon.getDmgMod();
 			for (String feat : character.getFeats()) {
 				switch (feat) {
 				}
 			}
 		}
 		}
-		return standardDmgBonus;
+		return (int) standardDmgBonus;
 	}
 
 	/**
@@ -131,7 +136,7 @@ public class Attack {
 	 * @param hitMod the hit mod
 	 * @return the double
 	 */
-	private double determineHitBonus(PfCharacter character, Weapon weapon2, double hitMod) {
+	private int determineHitBonus(PfCharacter character, Weapon weapon2, double hitMod) {
 		double standardHitBonus = character.getBab() + hitMod + weapon.getHitBonus();
 		switch (weapon.getType()) {
 		case (0): {
@@ -187,7 +192,7 @@ public class Attack {
 			}
 		}
 		}
-		return standardHitBonus;
+		return (int) standardHitBonus;
 	}
 
 	/**
@@ -209,9 +214,9 @@ public class Attack {
 	 * @param hitBonus the hit bonus
 	 * @param damageBonus the damage bonus
 	 */
-	private void initaliseSingleAttack(double hitBonus, double damageBonus) {
-		attackModi = new double[] { hitBonus };
-		damageModi = new double[] { damageBonus };
+	private void initaliseSingleAttack(int hitBonus, int damageBonus) {
+		attackModi = new int[] { hitBonus };
+		damageModi = new int[] { damageBonus };
 
 	}
 
@@ -222,9 +227,9 @@ public class Attack {
 	 * @param hitBonus the hit bonus
 	 * @param damageBonus the damage bonus
 	 */
-	private void initaliseFullRound(int arraySize, double hitBonus, double damageBonus) {
-		attackModi = new double[arraySize];
-		damageModi = new double[arraySize];
+	private void initaliseFullRound(int arraySize, int hitBonus, int damageBonus) {
+		attackModi = new int[arraySize];
+		damageModi = new int[arraySize];
 
 		for (int i = 0; i < arraySize; i++) {
 			attackModi[i] = hitBonus - 5 * i;
@@ -261,10 +266,10 @@ public class Attack {
 	 * Adds the full bab attack.
 	 */
 	public void addFullBabAttack() {
-		double[] tempAttack = attackModi;
-		double[] tempDamage = damageModi;
-		attackModi = new double[tempAttack.length + 1];
-		damageModi = new double[tempDamage.length + 1];
+		int[] tempAttack = attackModi;
+		int[] tempDamage = damageModi;
+		attackModi = new int[tempAttack.length + 1];
+		damageModi = new int[tempDamage.length + 1];
 
 		attackModi[0] = tempAttack[0];
 		damageModi[0] = tempDamage[0];
@@ -290,7 +295,7 @@ public class Attack {
 	 *
 	 * @return the attack modi
 	 */
-	public double[] getAttackModi() {
+	public int[] getAttackModi() {
 		return attackModi;
 	}
 
@@ -299,7 +304,7 @@ public class Attack {
 	 *
 	 * @return the damage modi
 	 */
-	public double[] getDamageModi() {
+	public int[] getDamageModi() {
 		return damageModi;
 	}
 
@@ -348,16 +353,17 @@ public class Attack {
 		return precisionDmgDice;
 	}
 
-	public void setAttackModi(double[] attackModi) {
+	public void setAttackModi(int[] attackModi) {
 		this.attackModi = attackModi;
 	}
 
-	public void setDamageModi(double[] damageModi) {
+	public void setDamageModi(int[] damageModi) {
 		this.damageModi = damageModi;
 	}
 
 	public void setWeapon(Weapon weapon) {
 		this.weapon = weapon;
+		setWeaponName(weapon.getName());
 	}
 
 	public void setWeaponName(String weaponName) {
@@ -382,7 +388,7 @@ public class Attack {
 	}
 
 	public void setFullRound(String readLine) {
-		if(readLine == "true") fullRound=true;
+		if(readLine.equals("true")) fullRound=true;
 		else fullRound=false;		
 	}
 
