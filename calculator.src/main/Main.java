@@ -44,7 +44,7 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		Filesystem.load("arathor.txt");
+		MainFrame.main(null, Filesystem.load("arathor.txt"));
 	}
 
 }

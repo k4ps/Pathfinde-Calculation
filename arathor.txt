@@ -3,15 +3,16 @@ Arathor
 12
 25
 Power Attack
+*
 #
 Falchion
 2
-4
 4
 2
 3
 0
 Keen
+*
 #
 Greatsword
 2
@@ -19,6 +20,7 @@ Greatsword
 2
 2
 0
+*
 <
 FullRoundName
 |
@@ -35,4 +37,6 @@ Falchion
 2
 3
 0
-Keen 
+Keen
+*
++

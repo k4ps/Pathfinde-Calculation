@@ -57,6 +57,10 @@ public class Attack {
 		}
 	}
 
+	public Attack() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * Determine dmg bonus.
 	 *
@@ -344,6 +348,30 @@ public class Attack {
 		return precisionDmgDice;
 	}
 
+	public void setAttackModi(double[] attackModi) {
+		this.attackModi = attackModi;
+	}
+
+	public void setDamageModi(double[] damageModi) {
+		this.damageModi = damageModi;
+	}
+
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
+	}
+
+	public void setWeaponName(String weaponName) {
+		this.weaponName = weaponName;
+	}
+
+	public void setFullRound(boolean fullRound) {
+		this.fullRound = fullRound;
+	}
+
+	public void setPrecisionDmgDice(ArrayList<int[]> precisionDmgDice) {
+		this.precisionDmgDice = precisionDmgDice;
+	}
+
 	/**
 	 * Checks if is full round.
 	 *
@@ -351,6 +379,11 @@ public class Attack {
 	 */
 	public boolean isFullRound() {
 		return fullRound;
+	}
+
+	public void setFullRound(String readLine) {
+		if(readLine == "true") fullRound=true;
+		else fullRound=false;		
 	}
 
 }

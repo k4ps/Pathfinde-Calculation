@@ -12,16 +12,19 @@ import characters.PfCharacter;
 import weapons.Weapon;
 
 public class Filesystem {
-	
-	public static void load(String filename){
-		Path filepath = FileSystems.getDefault().getPath(filename);		
+
+	public static PfCharacter load(String filename) {
+		Path filepath = FileSystems.getDefault().getPath(filename);
+		PfCharacter character = new PfCharacter();
 		try (BufferedReader reader = Files.newBufferedReader(filepath)) {
-			PfCharacter character = readCharacter(reader);
-			character.setWeapons(readWeapons(reader));
+			character = readCharacter(reader);
+			while (reader.readLine().equals("#"))
+				character.addWeapon(readWeapon(reader));
 			character.setFullRounds(readFullRounds(reader));
 		} catch (IOException x) {
-		    System.err.format("IOException: %s%n", x);
+			System.err.format("IOException: %s%n", x);
 		}
+		return character;
 	}
 
 	private static ArrayList<FullRound> readFullRounds(BufferedReader reader) {
@@ -29,7 +32,7 @@ public class Filesystem {
 		String line;
 		try {
 			FullRound fullround = new FullRound(reader.readLine());
-			while((line=reader.readLine())!=null){
+			while ((line = reader.readLine()).equals("|")) {
 				fullround.addAttack(readAttack(reader));
 			}
 		} catch (IOException e) {
@@ -41,43 +44,58 @@ public class Filesystem {
 
 	private static Attack readAttack(BufferedReader reader) {
 		String line;
+		String precision;
+		Attack attack = new Attack();
 		try {
-			while((line=reader.readLine())!="|"){
-				
+			double[] attackModi = new double[Integer.parseInt(reader.readLine())];
+			double[] dmgModi = new double[attackModi.length];
+			for (int i = 0; i < attackModi.length; i++) {
+				attackModi[i] = Integer.parseInt(reader.readLine());
+			}
+			int dmgMod = Integer.parseInt(reader.readLine());
+			for (int i = 0; i < dmgModi.length; i++) {
+				dmgModi[i] = dmgMod;
+			}
+			attack.setAttackModi(attackModi);
+			attack.setDamageModi(dmgModi);
+			attack.setFullRound(reader.readLine());
+			attack.setWeapon(readWeapon(reader));
+			if (!((precision = reader.readLine()).equals("+"))) {
+				int[] precisionDmg = new int[Integer.parseInt(precision)];
+				for (int i = 0; i < precisionDmg.length; i++) {
+					precisionDmg[i] = Integer.parseInt(reader.readLine());
+				}
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return attack;
 	}
 
-	private static ArrayList<Weapon> readWeapons(BufferedReader reader) {
-		ArrayList<Weapon> weaponlist = new ArrayList<>();
+	private static Weapon readWeapon(BufferedReader reader) {
 		Weapon weapon = new Weapon();
 		int[] dmgDice;
 		try {
-			String line;
-			while((line = reader.readLine()) != "<"){
-				weapon.setName(line);
-				dmgDice=new int[Integer.parseInt(reader.readLine())];
-				for(int i=0; i<dmgDice.length; i++){
-					dmgDice[i]=Integer.parseInt(reader.readLine());
-				}
-				weapon.setCritMultiplier(Integer.parseInt(reader.readLine()));
-				weapon.setCritRange(Integer.parseInt(reader.readLine()));
-				weapon.setType(Integer.parseInt(reader.readLine()));
-				String special;
-				while((special = reader.readLine()) != ("#")){
-					weapon.addSpecial(special);
-				}
-				weaponlist.add(weapon);
+			weapon.setName(reader.readLine());
+			dmgDice = new int[Integer.parseInt(reader.readLine())];
+			int diceType = Integer.parseInt(reader.readLine());
+			for (int i = 0; i < dmgDice.length; i++) {
+				dmgDice[i] = diceType;
+			}
+			weapon.setCritMultiplier(Integer.parseInt(reader.readLine()));
+			weapon.setCritRange(Integer.parseInt(reader.readLine()));
+			weapon.setType(Integer.parseInt(reader.readLine()));
+			String special;
+			while (!(special = reader.readLine()).equals("*")) {
+				weapon.addSpecial(special);
+
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return weaponlist;
+		return weapon;
 	}
 
 	private static PfCharacter readCharacter(BufferedReader reader) {
@@ -88,14 +106,14 @@ public class Filesystem {
 			character.setDex(Integer.parseInt(reader.readLine()));
 			character.setStr(Integer.parseInt(reader.readLine()));
 			String feat;
-			while((feat = reader.readLine()) != ("#")){
+			while (!(feat = reader.readLine()).equals("*")) {
 				character.addFeat(feat);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return character;
 	}
 }
