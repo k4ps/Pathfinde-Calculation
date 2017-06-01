@@ -1,42 +1,13 @@
-Arathor
-14
-12
-25
-Power Attack
-*
+Arathor;14;26;12;Power Attack;#
+Falchion;2;4;2;2;1.5;2;6;0;#
+/
+PA Full Round
+3;13;8;3;20;true
+Falchion;2;4;2;2;1.5;2;6;0;#
 #
-Falchion
-2
-4
-2
-3
-0
-Keen
-*
+/
+PA Single Attack
+1;13;20;false
+Falchion;2;4;2;2;1.5;2;6;0;#
 #
-Greatsword
-2
-6
-2
-2
-0
-*
-<
-FullRoundName
-|
-3
-22
-17
-12
-18
-true
-#
-Falchion
-2
-4
-2
-3
-0
-Keen
-*
-+
+/
