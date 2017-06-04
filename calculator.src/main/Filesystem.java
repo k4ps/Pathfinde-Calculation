@@ -49,7 +49,9 @@ public class Filesystem {
 	
 	private static Weapon readWeapon(String line) {
 		Weapon weapon = new Weapon();
-		String[] parts = line.split(";");		
+		String[] parts = line.split(";");
+		ArrayList<int[]> newPrecision = weapon.getPrecisionDmgDice();
+		int i =9;
 		weapon.setName(parts[0]);
 		weapon.setDmgDice(new int[]{Integer.parseInt(parts[1]), Integer.parseInt(parts[2])});
 		weapon.setHitBonus(Integer.parseInt(parts[3]));
@@ -58,9 +60,15 @@ public class Filesystem {
 		weapon.setCritMultiplier(Integer.parseInt(parts[6]));
 		weapon.setCritRange(Integer.parseInt(parts[7]));
 		weapon.setType(Integer.parseInt(parts[8]));
-		for(int i=9; !(parts[i].equals("#")); i++){
+		while(!(parts[i].equals("#"))){
 			weapon.addSpecial(parts[i]);
+			i++;
 		}
+		while(!(parts[i].equals("#"))){
+			newPrecision.add(new int[]{Integer.parseInt(parts[i]), Integer.parseInt(parts[i+1])});
+			i=i+2;;
+		}
+		weapon.setPrecisionDmgDice(newPrecision);
 		return weapon;
 	}
 	
@@ -158,6 +166,10 @@ public class Filesystem {
 		String returnString = weapon.getName()+";"+weapon.getDmgDice()[0]+";"+weapon.getDmgDice()[1]+";"+weapon.getHitBonus()+";"+weapon.getDmgBonus()+";"+weapon.getDmgMod()+";"+weapon.getCritMultiplier()+";"+weapon.getCritRange()+";"+weapon.getType()+";";
 		for(String special:weapon.getSpecials()){
 			returnString =returnString+special+";";
+		}
+		returnString = returnString+"#;";
+		for(int[] precision:weapon.getPrecisionDmgDice()){
+			returnString = returnString+precision[0]+";"+precision[1];
 		}
 		return returnString+"#";
 	}

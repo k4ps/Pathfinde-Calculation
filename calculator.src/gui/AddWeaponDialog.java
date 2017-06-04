@@ -18,13 +18,6 @@ import weapons.Weapon;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import java.awt.Choice;
-import javax.swing.JTextField;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -112,7 +105,6 @@ public class AddWeaponDialog extends JDialog {
 		
 		JRadioButton secondaryNaturalButton = new JRadioButton("Secondary Natural");
 		panel.add(secondaryNaturalButton);
-		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{twoHButton, oneHButton, offHButton, rangeButton, primaryNaturalButton, secondaryNaturalButton}));
 		
 		Choice choice = new Choice();
 		choice.setBounds(10, 50, 590, 22);

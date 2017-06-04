@@ -31,8 +31,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JFileChooser;
 import java.awt.Color;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -236,7 +234,6 @@ public class MainFrame extends JFrame {
 		JPanel panel_4 = new JPanel();
 		panel_4.setBounds(803, 38, 459, 570);
 		contentPane.add(panel_4);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane, panel, lblCharacterName, lblFullRounds, lblBuffs, panel_1, characterNameLabel, fullRoundChoice, panel_2, rdbtnBuff, rdbtnBuff_1, rdbtnBuff_2, rdbtnBuff_3, rdbtnBuff_4, rdbtnBuff_5, acTextField, lblEnemyAc, outputTextArea, panel_3, btnAddFullRound, btnEditCharacter, btnCalculateDpr, btnSimulateFullRound, menuBar, mnDatei, mntmOpen, mntmSave, panel_4}));
 	}
 
 	private FullRound getFullRoundByName(PfCharacter character, Choice fullRoundChoice) {

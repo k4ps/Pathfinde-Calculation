@@ -1,8 +1,6 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Choice;
-import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.List;
 import java.awt.event.MouseAdapter;
@@ -11,13 +9,10 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
-import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import characters.PfCharacter;
 
@@ -188,8 +183,6 @@ public class CharacterEditingDialog extends JDialog {
 			}
 		});
 		characterEditingPanel_3.add(btnCancel);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { characterEditingPanel, characterEditingPanel_1, lblName, lblBab, lblDex,
-				lblStr, lblFeats, characterEditingPanel_2, nameField, babField, dexField, strField, btnAddFeat }));
-	}
+		}
 
 }
