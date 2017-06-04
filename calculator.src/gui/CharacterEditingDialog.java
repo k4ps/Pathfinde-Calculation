@@ -19,7 +19,7 @@ import characters.PfCharacter;
 public class CharacterEditingDialog extends JDialog {
 
 	private final JPanel characterEditingPanel = new JPanel();
-	
+
 	/** The text field. */
 	private JTextField nameField;
 
@@ -34,13 +34,14 @@ public class CharacterEditingDialog extends JDialog {
 
 	private static ArrayList<String> implementedFeats = new ArrayList<>();
 	private ArrayList<String> newFeatList = new ArrayList<>();
-	
+
 	private static PfCharacter editedCharacter;
 
 	/**
 	 * Launch the application.
 	 */
 	public static PfCharacter main(PfCharacter character) {
+		getImplementedFeats();
 		try {
 			CharacterEditingDialog dialog = new CharacterEditingDialog(character);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -53,12 +54,13 @@ public class CharacterEditingDialog extends JDialog {
 
 	/**
 	 * Create the dialog.
-	 * @param character 
+	 * 
+	 * @param character
 	 */
 	public CharacterEditingDialog(PfCharacter character) {
 		setModal(true);
-		editedCharacter=character;
-		newFeatList=character.getFeats();
+		editedCharacter = character;
+		newFeatList = character.getFeats();
 		setTitle("Character Editing");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 402, 451);
@@ -118,7 +120,7 @@ public class CharacterEditingDialog extends JDialog {
 
 		Choice featChoice = new Choice();
 		for (String feat : implementedFeats) {
-			if (!character.getFeats().contains(feat))
+			if (!(character.getFeats().contains(feat)))
 				featChoice.add(feat);
 		}
 		featChoice.setBounds(12, 152, 162, 22);
@@ -135,9 +137,15 @@ public class CharacterEditingDialog extends JDialog {
 		btnAddFeat.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				newFeatList.add(featChoice.getSelectedItem());
-				list.add(featChoice.getSelectedItem());
-				featChoice.remove(featChoice.getSelectedItem());
+				try {
+					if (featChoice.getSelectedItem() != null) {
+						newFeatList.add(featChoice.getSelectedItem());
+						list.add(featChoice.getSelectedItem());
+						featChoice.remove(featChoice.getSelectedItem());
+					}
+				} catch (Exception x) {
+
+				}
 			}
 		});
 		btnAddFeat.setBounds(186, 152, 83, 22);
@@ -183,6 +191,14 @@ public class CharacterEditingDialog extends JDialog {
 			}
 		});
 		characterEditingPanel_3.add(btnCancel);
-		}
+	}
+
+	private static void getImplementedFeats() {
+		implementedFeats.add("Weapon Finesse");
+		implementedFeats.add("Power Attack");
+		implementedFeats.add("Rapid Shot");
+		implementedFeats.add("Flury of Blows");
+		implementedFeats.add("Point-Blank Shot");
+	}
 
 }

@@ -66,6 +66,7 @@ public class AddWeaponDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public AddWeaponDialog() {
+		setModal(true);
 		setBounds(100, 100, 766, 241);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
