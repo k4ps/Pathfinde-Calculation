@@ -4,6 +4,7 @@ Greataxe;1;12;3;1;0;0;1.5;0;#;#
 Greatclub;1;10;2;1;0;0;1.5;0;#;#
 Greatsword;2;6;2;2;0;0;1.5;0;#;#
 Guisarme;2;4;3;1;0;0;1.5;0;#;#
+Earth breaker;2;6;3;1;4;4;1.5;0;#;#
 /
 PA Full Round
 3;13;8;3;20;true

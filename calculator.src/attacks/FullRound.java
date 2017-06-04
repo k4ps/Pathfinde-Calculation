@@ -81,7 +81,7 @@ public class FullRound {
 	public void addAttack(Attack attack){
 		if(!attacks.isEmpty()) description = description + ", ";
 		attacks.add(attack);
-		description = description+attack.getWeaponName();
+		description = description+attack.getWeaponDescription();
 	}
 	
 	/**

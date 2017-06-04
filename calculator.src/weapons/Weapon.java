@@ -13,34 +13,34 @@ import java.util.ArrayList;
  */
 // TODO: Auto-generated Javadoc
 public class Weapon {
-	
+
 	/** The name. */
 	private String name;
-	
+
 	/** The dmg dice. */
 	private int[] dmgDice = new int[2];
-	
+
 	/** The precision dmg dice. */
 	private ArrayList<int[]> precisionDmgDice = new ArrayList<>();
-	
+
 	/** The specials. */
 	private ArrayList<String> specials = new ArrayList<>();
-	
+
 	/** The crit multiplier. */
 	private int critMultiplier;
-	
+
 	/** The crit range. */
 	private int critRange;
-	
+
 	/** The hit bonus. */
 	private int hitBonus;
-	
+
 	/** The dmg bonus. */
 	private int dmgBonus;
-	
+
 	/** The dmg mod. */
 	private double dmgMod;
-	
+
 	/** The type. */
 	private int type;
 
@@ -257,11 +257,21 @@ public class Weapon {
 	public double getDmgMod() {
 		return dmgMod;
 	}
+	
+	public String getDescritpion(){
+		String description;
+		if(dmgBonus==0&&hitBonus==1) description="M ";
+		if(dmgBonus==0&&hitBonus==0) description="";
+		else description="+"+String.valueOf(dmgBonus)+" ";
+		for(String special:specials) description= description+special+", ";
+		return description+getName();
+	}
 
 	/**
 	 * Sets the hit bonus.
 	 *
-	 * @param hitBonus the new hit bonus
+	 * @param hitBonus
+	 *            the new hit bonus
 	 */
 	public void setHitBonus(int hitBonus) {
 		this.hitBonus = hitBonus;
@@ -270,7 +280,8 @@ public class Weapon {
 	/**
 	 * Sets the dmg bonus.
 	 *
-	 * @param dmgBonus the new dmg bonus
+	 * @param dmgBonus
+	 *            the new dmg bonus
 	 */
 	public void setDmgBonus(int dmgBonus) {
 		this.dmgBonus = dmgBonus;
@@ -326,6 +337,19 @@ public class Weapon {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public void setEnhancement(int enhancement) {
+		if (enhancement == 0) {
+			setHitBonus(1);
+			setDmgBonus(0);
+		} else if (enhancement == -1) {
+			setHitBonus(0);
+			setDmgBonus(0);
+		}
+		setHitBonus(enhancement);
+		setDmgBonus(enhancement);
+
 	}
 
 }

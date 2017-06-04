@@ -392,4 +392,8 @@ public class Attack {
 		else fullRound=false;		
 	}
 
+	public String getWeaponDescription() {
+		return weapon.getDescritpion();
+	}
+
 }
