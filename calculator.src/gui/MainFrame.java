@@ -103,8 +103,8 @@ public class MainFrame extends JFrame {
 		// setResizable(false);
 		setTitle("Pathfinder Calculator");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1280, 720);
-		setExtendedState(MAXIMIZED_BOTH);
+		setBounds(0, 0, 1280, 720);
+		//setExtendedState(MAXIMIZED_BOTH);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.DARK_GRAY);
 		setContentPane(contentPane);
@@ -113,19 +113,19 @@ public class MainFrame extends JFrame {
 		JLabel lblFullRound = new JLabel("Full Round:");
 		lblFullRound.setForeground(Color.WHITE);
 		lblFullRound.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 35));
-		lblFullRound.setBounds(444, 35, 252, 43);
+		lblFullRound.setBounds(372, 12, 252, 43);
 		contentPane.add(lblFullRound);
-		
-				JLabel lblCharacterName = new JLabel("Character:");
-				lblCharacterName.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 35));
-				lblCharacterName.setBounds(12, 35, 234, 43);
-				contentPane.add(lblCharacterName);
-				lblCharacterName.setForeground(Color.WHITE);
+
+		JLabel lblCharacterName = new JLabel("Character:");
+		lblCharacterName.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 35));
+		lblCharacterName.setBounds(12, 12, 234, 43);
+		contentPane.add(lblCharacterName);
+		lblCharacterName.setForeground(Color.WHITE);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.DARK_GRAY);
 		panel.setBorder(new LineBorder(Color.LIGHT_GRAY, 5, true));
-		panel.setBounds(12, 88, 420, 466);
+		panel.setBounds(12, 67, 348, 466);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
@@ -173,7 +173,7 @@ public class MainFrame extends JFrame {
 
 		JPanel panel_6 = new JPanel();
 		panel_6.setBackground(Color.DARK_GRAY);
-		panel_6.setBounds(119, 12, 289, 444);
+		panel_6.setBounds(119, 12, 217, 444);
 		panel.add(panel_6);
 		panel_6.setLayout(null);
 
@@ -200,7 +200,7 @@ public class MainFrame extends JFrame {
 		textAreaFeats.setForeground(Color.WHITE);
 		textAreaFeats.setBackground(Color.DARK_GRAY);
 		textAreaFeats.setEditable(false);
-		textAreaFeats.setBounds(10, 124, 269, 150);
+		textAreaFeats.setBounds(10, 124, 200, 150);
 		panel_6.add(textAreaFeats);
 
 		TextArea textAreaWeapons = new TextArea();
@@ -208,14 +208,14 @@ public class MainFrame extends JFrame {
 		textAreaWeapons.setForeground(Color.WHITE);
 		textAreaWeapons.setBackground(Color.DARK_GRAY);
 		textAreaWeapons.setEditable(false);
-		textAreaWeapons.setBounds(10, 280, 269, 150);
+		textAreaWeapons.setBounds(10, 280, 200, 150);
 		panel_6.add(textAreaWeapons);
 
 		JPanel panel_7 = new JPanel();
 		panel_7.setForeground(Color.WHITE);
 		panel_7.setBackground(Color.DARK_GRAY);
 		panel_7.setBorder(new LineBorder(Color.LIGHT_GRAY, 5, true));
-		panel_7.setBounds(444, 88, 437, 466);
+		panel_7.setBounds(372, 67, 509, 466);
 		contentPane.add(panel_7);
 		panel_7.setLayout(null);
 
@@ -223,12 +223,12 @@ public class MainFrame extends JFrame {
 		fullRoundChoice.setFont(new Font("Razer Text Regular", Font.PLAIN, 20));
 		fullRoundChoice.setForeground(Color.DARK_GRAY);
 		fullRoundChoice.setBackground(Color.WHITE);
-		fullRoundChoice.setBounds(10, 10, 415, 22);
+		fullRoundChoice.setBounds(10, 10, 487, 25);
 		panel_7.add(fullRoundChoice);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.DARK_GRAY);
-		panel_2.setBounds(10, 41, 415, 152);
+		panel_2.setBounds(10, 41, 487, 152);
 		panel_7.add(panel_2);
 
 		JRadioButton rdbtnBuff = new JRadioButton("Buff 1");
@@ -266,7 +266,7 @@ public class MainFrame extends JFrame {
 		rdbtnBuff_5.setForeground(Color.WHITE);
 		rdbtnBuff_5.setBackground(Color.DARK_GRAY);
 		panel_2.add(rdbtnBuff_5);
-		
+
 		JRadioButton rdbtnBuff_6 = new JRadioButton("Buff 7");
 		rdbtnBuff_6.setForeground(Color.WHITE);
 		rdbtnBuff_6.setBackground(Color.DARK_GRAY);
@@ -288,34 +288,58 @@ public class MainFrame extends JFrame {
 
 		JTextArea outputTextArea = new JTextArea();
 		outputTextArea.setFont(new Font("Razer Text Regular", Font.PLAIN, 20));
-		outputTextArea.setBounds(10, 238, 415, 216);
+		outputTextArea.setBounds(10, 238, 487, 216);
 		panel_7.add(outputTextArea);
 		outputTextArea.setForeground(new Color(51, 51, 51));
 		outputTextArea.setBackground(new Color(255, 255, 255));
 		outputTextArea.setEditable(false);
-				
-						JLabel lblChaName = new JLabel(character.getName());
-						lblChaName.setBounds(12, 0, 265, 19);
-						panel_6.add(lblChaName);
-						lblChaName.setFont(new Font("Razer Text Regular", Font.BOLD, 20));
-						lblChaName.setForeground(Color.WHITE);
 
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setForeground(Color.WHITE);
-		menuBar.setBackground(Color.DARK_GRAY);
-		menuBar.setBounds(0, 0, this.getBounds().width - 2, 26);
-		contentPane.add(menuBar);
+		JLabel lblChaName = new JLabel(character.getName());
+		lblChaName.setBounds(12, 0, 198, 19);
+		panel_6.add(lblChaName);
+		lblChaName.setFont(new Font("Razer Text Regular", Font.BOLD, 20));
+		lblChaName.setForeground(Color.WHITE);
 
-		JMenu mnDatei = new JMenu("File");
-		mnDatei.setFont(new Font("Razer Text Regular", Font.BOLD, 15));
-		mnDatei.setForeground(Color.WHITE);
-		menuBar.add(mnDatei);
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(12, 584, 1240, 72);
+		contentPane.add(panel_3);
+		panel_3.setBackground(Color.DARK_GRAY);
 
-		JMenuItem mntmOpen = new JMenuItem("Open");
-		mntmOpen.setFont(new Font("Razer Text Regular", Font.BOLD, 10));
-		mntmOpen.setForeground(Color.WHITE);
-		mntmOpen.setBackground(Color.DARK_GRAY);
-		mntmOpen.addActionListener(new ActionListener() {
+		JButton btnCalculateDpr = new JButton("Calculate DPR");
+		btnCalculateDpr.setBackground(Color.LIGHT_GRAY);
+		btnCalculateDpr.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 35));
+		btnCalculateDpr.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					outputTextArea.append("Dpr von " + getFullRoundByName(character, fullRoundChoice).getDescription()
+							+ " = " + Calculation.calcDPR(getFullRoundByName(character, fullRoundChoice),
+									Integer.parseInt(acTextField.getText()))
+							+ "\n");
+				} catch (Exception x) {
+
+				}
+			}
+		});
+		panel_3.add(btnCalculateDpr);
+
+		JButton btnSimulateFullRound = new JButton("Simulate Full Round");
+		btnSimulateFullRound.setBackground(Color.LIGHT_GRAY);
+		btnSimulateFullRound.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 35));
+		panel_3.add(btnSimulateFullRound);
+
+		JPanel panel_1 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
+		panel_1.setBorder(new LineBorder(Color.LIGHT_GRAY, 5, true));
+		panel_1.setForeground(Color.WHITE);
+		panel_1.setBackground(Color.DARK_GRAY);
+		panel_1.setBounds(893, 67, 359, 466);
+		contentPane.add(panel_1);
+		
+		JButton btnLoadCharacter = new JButton("Load character");
+		btnLoadCharacter.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 30));
+		btnLoadCharacter.setBackground(Color.LIGHT_GRAY);
+		btnLoadCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser(new File(System.getProperty("user.dir")));
 				fileChooser.showOpenDialog(null);
@@ -324,91 +348,60 @@ public class MainFrame extends JFrame {
 						fullRoundChoice);
 			}
 		});
-		mnDatei.add(mntmOpen);
-
-		JMenuItem mntmSave = new JMenuItem("Save");
-		mntmSave.setFont(new Font("Razer Text Regular", Font.BOLD, 10));
-		mntmSave.setForeground(Color.WHITE);
-		mntmSave.setBackground(Color.DARK_GRAY);
-		mntmSave.addActionListener(new ActionListener() {
+		panel_1.add(btnLoadCharacter);
+		
+		JButton btnSaveCharacter = new JButton("Save character");
+		btnSaveCharacter.setBackground(Color.LIGHT_GRAY);
+		btnSaveCharacter.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 30));
+		btnSaveCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Filesystem.save(character);
 			}
 		});
-		mnDatei.add(mntmSave);
-		
-				JPanel panel_3 = new JPanel();
-				panel_3.setBounds(12, 584, 1240, 72);
-				contentPane.add(panel_3);
-				panel_3.setBackground(Color.DARK_GRAY);
-				
-						JButton btnCalculateDpr = new JButton("Calculate DPR");
-						btnCalculateDpr.setBackground(Color.LIGHT_GRAY);
-						btnCalculateDpr.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 35));
-						btnCalculateDpr.addMouseListener(new MouseAdapter() {
-							@Override
-							public void mouseClicked(MouseEvent e) {
-								try {
-									outputTextArea.append("Dpr von " + getFullRoundByName(character, fullRoundChoice).getDescription()
-											+ " = " + Calculation.calcDPR(getFullRoundByName(character, fullRoundChoice),
-													Integer.parseInt(acTextField.getText()))
-											+ "\n");
-								} catch (Exception x) {
+		panel_1.add(btnSaveCharacter);
 
-								}
-							}
-						});
-						panel_3.add(btnCalculateDpr);
-						
-								JButton btnSimulateFullRound = new JButton("Simulate Full Round");
-								btnSimulateFullRound.setBackground(Color.LIGHT_GRAY);
-								btnSimulateFullRound.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 35));
-								panel_3.add(btnSimulateFullRound);
-								
-								JPanel panel_1 = new JPanel();
-								FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
-								panel_1.setBorder(new LineBorder(Color.LIGHT_GRAY, 5, true));
-								panel_1.setForeground(Color.WHITE);
-								panel_1.setBackground(Color.DARK_GRAY);
-								panel_1.setBounds(893, 88, 359, 466);
-								contentPane.add(panel_1);
-								
-										JButton btnEditCharacter = new JButton("Edit Character");
-										btnEditCharacter.setBackground(Color.LIGHT_GRAY);
-										panel_1.add(btnEditCharacter);
-										btnEditCharacter.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 30));
-										
-												JButton btnAddWeapon = new JButton("Add Weapon");
-												btnAddWeapon.setBackground(Color.LIGHT_GRAY);
-												panel_1.add(btnAddWeapon);
-												btnAddWeapon.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 30));
-												
-														JButton btnAddFullRound = new JButton("Add Full Round");
-														btnAddFullRound.setBackground(Color.LIGHT_GRAY);
-														panel_1.add(btnAddFullRound);
-														btnAddFullRound.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 30));
-														btnAddFullRound.addMouseListener(new MouseAdapter() {
-															@Override
-															public void mouseClicked(MouseEvent e) {
-																AddFullRoundDialog.main(character);
-															}
-														});
-												btnAddWeapon.addMouseListener(new MouseAdapter() {
-													@Override
-													public void mouseClicked(MouseEvent arg0) {
-														AddWeaponDialog.main(null);
-														refreshFrame(lblChaName, lblChaBab, lblChaDex, lblChaStr, textAreaFeats, textAreaWeapons,
-																fullRoundChoice);
-													}
-												});
-										btnEditCharacter.addMouseListener(new MouseAdapter() {
-											@Override
-											public void mouseClicked(MouseEvent e) {
-												character = CharacterEditingDialog.main(character);
-												refreshFrame(lblChaName, lblChaBab, lblChaDex, lblChaStr, textAreaFeats, textAreaWeapons,
-														fullRoundChoice);
-											}
-										});
+		JButton btnEditCharacter = new JButton("Edit Character");
+		btnEditCharacter.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(btnEditCharacter);
+		btnEditCharacter.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 30));
+
+		JButton btnAddWeapon = new JButton("Add Weapon");
+		btnAddWeapon.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(btnAddWeapon);
+		btnAddWeapon.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 30));
+
+		JButton btnAddFullRound = new JButton("Add Full Round");
+		btnAddFullRound.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(btnAddFullRound);
+		btnAddFullRound.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 30));
+		
+		JLabel lblMenu = new JLabel("menu:");
+		lblMenu.setForeground(Color.WHITE);
+		lblMenu.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 35));
+		lblMenu.setBounds(893, 12, 252, 43);
+		contentPane.add(lblMenu);
+		btnAddFullRound.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				AddFullRoundDialog.main(character);
+			}
+		});
+		btnAddWeapon.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				AddWeaponDialog.main(null);
+				refreshFrame(lblChaName, lblChaBab, lblChaDex, lblChaStr, textAreaFeats, textAreaWeapons,
+						fullRoundChoice);
+			}
+		});
+		btnEditCharacter.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				character = CharacterEditingDialog.main(character);
+				refreshFrame(lblChaName, lblChaBab, lblChaDex, lblChaStr, textAreaFeats, textAreaWeapons,
+						fullRoundChoice);
+			}
+		});
 	}
 
 	protected void refreshFrame(JLabel lblChaName, JLabel lblChaBab, JLabel lblChaDex, JLabel lblChaStr,
@@ -417,11 +410,11 @@ public class MainFrame extends JFrame {
 		lblChaBab.setText(String.valueOf(character.getBab()));
 		lblChaDex.setText(String.valueOf(character.getDex()));
 		lblChaStr.setText(String.valueOf(character.getStr()));
-		textAreaFeats.setText("");
+		textAreaFeats.setText(null);
 		for (String feat : character.getFeats()) {
 			textAreaFeats.append(feat + "\n");
 		}
-		textAreaWeapons.setText("");
+		textAreaWeapons.setText(null);
 		for (Weapon weapon : character.getWeapons()) {
 			textAreaWeapons.append(weapon.getName() + "\n");
 		}
