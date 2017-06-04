@@ -1,0 +1,71 @@
+Bayonet;1;6;2;1;0;0;1.5;0;#;#
+Boarding Pike;1;8;3;1;0;0;1.5;0;#;#
+Kumade;1;6;3;1;0;0;1.5;0;#;#;
+Kumade, collapsible;1;6;3;1;0;0;1.5;0;#;#
+Longspear;1;8;3;1;0;0;1.5;0;#;#
+Quarterstaff;1;6;2;1;0;0;1.5;0;#;#
+Spear;1;8;3;1;0;0;1.5;0;#;#
+Spear, boar;1;8;2;1;0;0;1.5;0;#;#
+Bardiche;1;10;2;2;0;0;1.5;0;#;#
+Bec de corbin;1;10;3;1;0;0;1.5;0;#;#
+Bill;1;8;3;1;0;0;1.5;0;#;#
+Earth breaker;2;6;3;1;0;0;1.5;0;#;#
+Falchion;2;4;2;3;0;0;1.5;0;#;#
+Flail, heavy;1;10;2;2;0;0;1.5;0;#;#
+Glaive;1;10;3;1;0;0;1.5;0;#;#
+Glaive-guisarme;1;10;3;1;0;0;1.5;0;#;#
+Greataxe;1;12;3;1;0;0;1.5;0;#;#
+Greatclub;1;10;2;1;0;0;1.5;0;#;#
+Greatsword;2;6;2;2;0;0;1.5;0;#;#
+Guisarme;2;4;3;1;0;0;1.5;0;#;#
+Halberd;1;10;3;1;0;0;1.5;0;#;#
+Hammer, lucerne;1;12;2;1;0;0;1.5;0;#;#
+Horsechopper;1;10;3;1;0;0;1.5;0;#;#
+Lance;1;8;3;1;0;0;1.5;0;#;#
+Ogre hook;1;10;3;1;0;0;1.5;0;#;#
+Pickaxe;1;8;4;1;0;0;1.5;0;#;#
+Planson;1;10;2;1;0;0;1.5;0;#;#
+Ranseur;2;4;3;1;0;0;1.5;0;#;#
+Scythe;2;4;4;1;0;0;1.5;0;#;#
+Spear, syringe;1;8;3;1;0;0;1.5;0;#;#
+Axe, Orc Double;1;8;3;1;0;0;1.5;0;#;#
+Battle Ladder;1;6;2;1;0;0;1.5;0;#;#
+Boarding gaff;1;6;2;1;0;0;1.5;0;#;#
+Chain, Spiked;2;4;2;1;0;0;1.5;0;#;#
+Crook;1;6;2;1;0;0;1.5;0;#;#
+Curve blade, elven;1;10;2;3;0;0;1.5;0;#;#
+Dorn Dergar, dwarven;1;10;2;1;0;0;1.5;0;#;#
+Elven branched spear;1;8;3;1;0;0;1.5;0;#;#
+Fauchard;1;10;2;3;0;0;1.5;0;#;#
+Flail, dire;1;8;2;1;0;0;1.5;0;#;#
+Flailpole;1;8;2;1;0;0;1.5;0;#;#
+Flambard;1;10;2;2;0;0;1.5;0;#;#
+Flying blade;1;12;3;1;0;0;1.5;0;#;#
+Garrote;1;6;2;1;0;0;1.5;0;#;#
+Hammer, Gnome hooked;1;8;3;1;0;0;1.5;0;#;#
+Harpoon;1;8;3;1;0;0;1.5;0;#;#
+Longaxe, dwarven;1;12;3;1;0;0;1.5;0;#;#
+Longhammer, dwarven;2;6;3;1;0;0;1.5;0;#;#
+Mancatcher;1;2;2;1;0;0;1.5;0;#;#
+Orc skull ram;1;10;3;1;0;0;1.5;0;#;#
+Piston maul;1;10;2;1;0;0;1.5;0;#;#
+Ripsaw glaive;1;10;3;1;0;0;1.5;0;#;#
+Scarf, bladed;1;6;2;1;0;0;1.5;0;#;#
+Spear, totem;1;10;3;1;0;0;1.5;0;#;#
+Sword, two-bladed;1;8;2;2;0;0;1.5;0;#;#
+Urgrosh, dwarven;1;8;3;1;0;0;1.5;0;#;#
+Hooked lance;1;8;4;1;0;0;1.5;0;#;#
+Monk's spade;1;6;2;1;0;0;1.5;0;#;#
+Naginata;1;8;4;1;0;0;1.5;0;#;#
+Nodachi;1;10;2;3;0;0;1.5;0;#;#
+Sansetsukon;1;10;2;2;0;0;1.5;0;#;#
+Sword, tri-point double-edged;1;10;3;1;0;0;1.5;0;#;#
+Tiger fork;1;8;2;1;0;0;1.5;0;#;#
+Bo staff;1;6;2;1;0;0;1.5;0;#;#
+Chain spear;1;6;2;1;0;0;1.5;0;#;#
+Kama, double-chained;1;6;2;1;0;0;1.5;0;#;#
+Katana, double walking stick;1;6;2;2;0;0;1.5;0;#;#
+Kyoketsu shoge;1;4;2;1;0;0;1.5;0;#;#
+Meteor hammer;1;8;2;1;0;0;1.5;0;#;#
+Sword, seven-branched;1;10;3;1;0;0;1.5;0;#;#
+Tetsubo;1;10;4;1;0;0;1.5;0;#;#

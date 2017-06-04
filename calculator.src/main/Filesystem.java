@@ -47,18 +47,18 @@ public class Filesystem {
 		return character;
 	}
 	
-	private static Weapon readWeapon(String line) {
+	public static Weapon readWeapon(String line) {
 		Weapon weapon = new Weapon();
 		String[] parts = line.split(";");
 		ArrayList<int[]> newPrecision = weapon.getPrecisionDmgDice();
 		int i =9;
 		weapon.setName(parts[0]);
 		weapon.setDmgDice(new int[]{Integer.parseInt(parts[1]), Integer.parseInt(parts[2])});
-		weapon.setHitBonus(Integer.parseInt(parts[3]));
-		weapon.setDmgBonus(Integer.parseInt(parts[4]));
-		weapon.setDmgMod(Double.parseDouble(parts[5]));
-		weapon.setCritMultiplier(Integer.parseInt(parts[6]));
-		weapon.setCritRange(Integer.parseInt(parts[7]));
+		weapon.setCritMultiplier(Integer.parseInt(parts[3]));
+		weapon.setCritRange(Integer.parseInt(parts[4]));
+		weapon.setHitBonus(Integer.parseInt(parts[5]));
+		weapon.setDmgBonus(Integer.parseInt(parts[6]));
+		weapon.setDmgMod(Double.parseDouble(parts[7]));
 		weapon.setType(Integer.parseInt(parts[8]));
 		while(!(parts[i].equals("#"))){
 			weapon.addSpecial(parts[i]);
@@ -163,7 +163,7 @@ public class Filesystem {
 	}
 
 	private static String writeWeapon(Weapon weapon) {
-		String returnString = weapon.getName()+";"+weapon.getDmgDice()[0]+";"+weapon.getDmgDice()[1]+";"+weapon.getHitBonus()+";"+weapon.getDmgBonus()+";"+weapon.getDmgMod()+";"+weapon.getCritMultiplier()+";"+weapon.getCritRange()+";"+weapon.getType()+";";
+		String returnString = weapon.getName()+";"+weapon.getDmgDice()[0]+";"+weapon.getDmgDice()[1]+";"+weapon.getCritMultiplier()+";"+weapon.getCritRange()+";"+weapon.getHitBonus()+";"+weapon.getDmgBonus()+";"+weapon.getDmgMod()+";"+weapon.getType()+";";
 		for(String special:weapon.getSpecials()){
 			returnString =returnString+special+";";
 		}
