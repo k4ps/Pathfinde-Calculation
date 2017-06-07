@@ -340,6 +340,8 @@ public class Weapon {
 	}
 
 	public void setEnhancement(int enhancement) {
+		setHitBonus(enhancement);
+		setDmgBonus(enhancement);
 		if (enhancement == 0) {
 			setHitBonus(1);
 			setDmgBonus(0);
@@ -347,9 +349,6 @@ public class Weapon {
 			setHitBonus(0);
 			setDmgBonus(0);
 		}
-		setHitBonus(enhancement);
-		setDmgBonus(enhancement);
-
 	}
 
 }

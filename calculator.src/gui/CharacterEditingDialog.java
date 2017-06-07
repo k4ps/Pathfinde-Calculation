@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import characters.PfCharacter;
+import weapons.Weapon;
+
 import java.awt.Color;
 import java.awt.Font;
 
@@ -43,6 +45,7 @@ public class CharacterEditingDialog extends JDialog {
 	 * Launch the application.
 	 */
 	public static PfCharacter main(PfCharacter character) {
+		editedCharacter = character;
 		getImplementedFeats();
 		try {
 			CharacterEditingDialog dialog = new CharacterEditingDialog(character);
@@ -62,7 +65,6 @@ public class CharacterEditingDialog extends JDialog {
 	public CharacterEditingDialog(PfCharacter character) {
 		setBackground(Color.DARK_GRAY);
 		setModal(true);
-		editedCharacter = character;
 		newFeatList = character.getFeats();
 		setTitle("Character Editing");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -197,7 +199,7 @@ public class CharacterEditingDialog extends JDialog {
 				}
 			}
 		});
-		
+
 		JButton btnCreateCharacter = new JButton("Edit Character");
 		btnCreateCharacter.setBackground(Color.LIGHT_GRAY);
 		btnCreateCharacter.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 20));
@@ -233,6 +235,14 @@ public class CharacterEditingDialog extends JDialog {
 		implementedFeats.add("Rapid Shot");
 		implementedFeats.add("Flury of Blows");
 		implementedFeats.add("Point-Blank Shot");
+		for (Weapon weapon : editedCharacter.getWeapons()) {
+			if (!(implementedFeats.contains("Weapon Focus " + weapon.getName())))
+				implementedFeats.add("Weapon Focus " + weapon.getName());
+		}
+		for (Weapon weapon : editedCharacter.getWeapons()) {
+			if (!(implementedFeats.contains("Improved Critical " + weapon.getName())))
+				implementedFeats.add("Improved Critical " + weapon.getName());
+		}
 	}
 
 }

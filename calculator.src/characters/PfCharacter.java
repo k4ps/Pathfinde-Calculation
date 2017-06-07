@@ -16,27 +16,30 @@ import weapons.Weapon;
  * The Class PfCharacter.
  */
 public class PfCharacter {
-	
+
 	/** The name. */
 	private String name;
-	
+
 	/** The bab. */
 	private int bab;
-	
+
 	/** The str. */
 	private int str;
-	
+
 	/** The dex. */
 	private int dex;
-	
+
 	/** The full rounds. */
- 	private ArrayList<FullRound> fullRounds = new ArrayList<>();
-	
+	private ArrayList<FullRound> fullRounds = new ArrayList<>();
+
 	/** The weapons. */
 	private ArrayList<Weapon> weapons = new ArrayList<>();
-	
+
 	/** The feats. */
 	private ArrayList<String> feats = new ArrayList<>();
+	
+	/**	The size of the character. 0==fine, 1==Diminutive, 2==Tiny, 3==Small, 4==Medium, 5==Large, 6==Huge, 7==Gargantuan, 8==Colossal */
+	private int size;
 
 	/**
 	 * Instantiates a new pf character.
@@ -100,14 +103,27 @@ public class PfCharacter {
 		}
 		}
 	}
-	
+
 	/**
 	 * Adds the feat.
 	 *
-	 * @param feat the feat
+	 * @param feat
+	 *            the feat
 	 */
-	public void addFeat(String feat){
+	public void addFeat(String feat) {
 		feats.add(feat);
+		if (feat.contains("Weapon Focus")) {
+			for (Weapon weapon : weapons) {
+				if (("Weapon Focus " + weapon.getName()).equals(feat))
+					weapon.setHitBonus(weapon.getHitBonus() + 1);
+			}
+		}
+		if (feat.contains("Improved Critical")) {
+			for (Weapon weapon : weapons) {
+				if (("Improved Critical " + weapon.getName()).equals(feat) && !(weapon.getSpecials().contains("Keen")))
+					weapon.setCritRange(weapon.getCritRange() * 2);
+			}
+		}
 	}
 
 	/**
@@ -146,6 +162,10 @@ public class PfCharacter {
 
 	public void setFeats(ArrayList<String> feats) {
 		this.feats = feats;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
 	}
 
 	/**
@@ -211,9 +231,13 @@ public class PfCharacter {
 		return weapons;
 	}
 
+	public int getSize() {
+		return size;
+	}
+
 	public void addFullRound(FullRound readFullRound) {
 		fullRounds.add(readFullRound);
-		
+
 	}
 
 }

@@ -423,7 +423,10 @@ public class AddWeaponDialog extends JDialog {
 		}
 		getWeaponList();
 		for (Weapon weapon : viableWeapons) {
-			choice.add(weapon.getName());
+			choice.add(weapon.getName());	
+			if (weapon.getName().equals(choice.getSelectedItem())) {
+				choosenWeapon = weapon;
+			}
 		}
 
 	}
