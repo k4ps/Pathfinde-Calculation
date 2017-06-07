@@ -402,11 +402,11 @@ public class MainFrame extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				try{
 					character.addWeapon(AddWeaponDialog.main(character));
+					refreshFrame(lblChaName, lblChaBab, lblChaDex, lblChaStr, textAreaFeats, textAreaWeapons,
+							fullRoundChoice);
 				}catch(NullPointerException x){
 					
 				}
-				refreshFrame(lblChaName, lblChaBab, lblChaDex, lblChaStr, textAreaFeats, textAreaWeapons,
-						fullRoundChoice);
 			}
 		});
 
