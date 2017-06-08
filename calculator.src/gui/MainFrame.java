@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import attacks.Attack;
 import attacks.FullRound;
 import calculations.Calculation;
 import characters.PfCharacter;
@@ -285,13 +286,12 @@ public class MainFrame extends JFrame {
 		acTextField.setText("0");
 		acTextField.setColumns(10);
 
-		JTextArea outputTextArea = new JTextArea();
+		TextArea outputTextArea = new TextArea();
+		outputTextArea.setForeground(Color.WHITE);
 		outputTextArea.setFont(new Font("Razer Text Regular", Font.PLAIN, 20));
-		outputTextArea.setBounds(10, 238, 487, 216);
+		outputTextArea.setBackground(Color.DARK_GRAY);
+		outputTextArea.setBounds(10, 234, 487, 222);
 		panel_7.add(outputTextArea);
-		outputTextArea.setForeground(new Color(51, 51, 51));
-		outputTextArea.setBackground(new Color(255, 255, 255));
-		outputTextArea.setEditable(false);
 
 		JLabel lblChaName = new JLabel(character.getName());
 		lblChaName.setBounds(12, 0, 198, 19);
@@ -324,6 +324,15 @@ public class MainFrame extends JFrame {
 		panel_3.add(btnCalculateDpr);
 
 		JButton btnSimulateFullRound = new JButton("Simulate Full Round");
+		btnSimulateFullRound.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				outputTextArea
+						.append(Calculation.simulate(getFullRoundByName(character, fullRoundChoice.getSelectedItem()),
+								Integer.parseInt(acTextField.getText())));
+
+			}
+		});
 		btnSimulateFullRound.setBackground(Color.LIGHT_GRAY);
 		btnSimulateFullRound.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 54));
 		panel_3.add(btnSimulateFullRound);
@@ -436,7 +445,7 @@ public class MainFrame extends JFrame {
 		fullRoundChoice.removeAll();
 		;
 		for (FullRound fullround : character.getFullRounds()) {
-			fullRoundChoice.add(fullround.getDescription() + "\n");
+			fullRoundChoice.add(fullround.getDescription());
 		}
 	}
 

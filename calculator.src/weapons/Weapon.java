@@ -261,7 +261,7 @@ public class Weapon {
 	public String getDescritpion(){
 		String description;
 		if(dmgBonus==0&&hitBonus==1) description="M ";
-		if(dmgBonus==0&&hitBonus==0) description="";
+		else if(dmgBonus==0&&hitBonus==0) description="";
 		else description="+"+String.valueOf(dmgBonus)+" ";
 		for(String special:specials) description= description+special+", ";
 		return description+getName();
