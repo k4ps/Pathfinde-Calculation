@@ -311,8 +311,9 @@ public class MainFrame extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					outputTextArea.append("Dpr von " + getFullRoundByName(character, fullRoundChoice).getDescription()
-							+ " = " + Calculation.calcDPR(getFullRoundByName(character, fullRoundChoice),
+					outputTextArea.append("Dpr von "
+							+ getFullRoundByName(character, fullRoundChoice.getSelectedItem()).getDescription() + " = "
+							+ Calculation.calcDPR(getFullRoundByName(character, fullRoundChoice.getSelectedItem()),
 									Integer.parseInt(acTextField.getText()))
 							+ "\n");
 				} catch (Exception x) {
@@ -358,20 +359,20 @@ public class MainFrame extends JFrame {
 			}
 		});
 		panel_1.add(btnSaveCharacter);
-		
-				JButton btnEditCharacter = new JButton("Edit Character");
-				btnEditCharacter.setBackground(Color.LIGHT_GRAY);
-				panel_1.add(btnEditCharacter);
-				btnEditCharacter.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 30));
-				btnEditCharacter.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						character = CharacterEditingDialog.main(character);
-						refreshFrame(lblChaName, lblChaBab, lblChaDex, lblChaStr, textAreaFeats, textAreaWeapons,
-								fullRoundChoice);
-					}
-				});
-		
+
+		JButton btnEditCharacter = new JButton("Edit Character");
+		btnEditCharacter.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(btnEditCharacter);
+		btnEditCharacter.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 30));
+		btnEditCharacter.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				character = CharacterEditingDialog.main(character);
+				refreshFrame(lblChaName, lblChaBab, lblChaDex, lblChaStr, textAreaFeats, textAreaWeapons,
+						fullRoundChoice);
+			}
+		});
+
 		JButton btnEditFullRounds = new JButton("Edit Fullrounds");
 		btnEditFullRounds.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 30));
 		btnEditFullRounds.setBackground(Color.LIGHT_GRAY);
@@ -387,7 +388,7 @@ public class MainFrame extends JFrame {
 				AddFullRoundDialog.main(character);
 			}
 		});
-		
+
 		JButton btnEditWeapons = new JButton("Edit Weapons");
 		btnEditWeapons.setBackground(Color.LIGHT_GRAY);
 		btnEditWeapons.setFont(new Font("Razer Header Regular Oblique", Font.BOLD, 30));
@@ -400,12 +401,12 @@ public class MainFrame extends JFrame {
 		btnAddWeapon.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				try{
+				try {
 					character.addWeapon(AddWeaponDialog.main(character));
 					refreshFrame(lblChaName, lblChaBab, lblChaDex, lblChaStr, textAreaFeats, textAreaWeapons,
 							fullRoundChoice);
-				}catch(NullPointerException x){
-					
+				} catch (NullPointerException x) {
+
 				}
 			}
 		});
@@ -439,9 +440,9 @@ public class MainFrame extends JFrame {
 		}
 	}
 
-	private FullRound getFullRoundByName(PfCharacter character, Choice fullRoundChoice) {
+	private FullRound getFullRoundByName(PfCharacter character, String string) {
 		for (FullRound fullround : character.getFullRounds()) {
-			if (fullround.getDescription().equals(fullRoundChoice.getSelectedItem()))
+			if (fullround.getDescription().equals(string))
 				return fullround;
 		}
 		return null;

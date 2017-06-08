@@ -37,9 +37,12 @@ public class PfCharacter {
 
 	/** The feats. */
 	private ArrayList<String> feats = new ArrayList<>();
-	
-	/**	The size of the character. 0==fine, 1==Diminutive, 2==Tiny, 3==Small, 4==Medium, 5==Large, 6==Huge, 7==Gargantuan, 8==Colossal */
-	private int size;
+
+	/**
+	 * The size of the character. -4==fine, -3==Diminutive, -2==Tiny, -1==Small,
+	 * 0==Medium, 1==Large, 2==Huge, 3==Gargantuan, 4==Colossal
+	 */
+	private int size=5;
 
 	/**
 	 * Instantiates a new pf character.
@@ -133,7 +136,67 @@ public class PfCharacter {
 	 *            the weapon
 	 */
 	public void addWeapon(Weapon weapon) {
+		weapon = adaptWeaponbySize(weapon, size);
 		weapons.add(weapon);
+	}
+
+	private Weapon adaptWeaponbySize(Weapon weapon, int newSize) {
+		// TODO Auto-generated method stub
+		int[][] diceArray = new int[][] { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 6 }, { 1, 8 }, { 1, 10 },
+				{ 2, 6 }, { 2, 8 }, { 3, 6 }, { 3, 8 }, { 4, 6 }, { 4, 8 }, { 6, 6 }, { 6, 8 }, { 8, 6 }, { 8, 8 },
+				{ 12, 6 }, { 12, 8 }, { 16, 6 } };
+		weapon.setHitBonus(weapon.getHitBonus()-newSize);
+
+		if (newSize < size)
+			return decreasedWeaponSize(weapon, diceArray);
+		if (newSize > size)
+			return increasedWeaponSize(weapon, diceArray);
+		if (size < 0)
+			return decreasedWeaponSize(weapon, diceArray);
+		if (size > 0)
+			return increasedWeaponSize(weapon, diceArray);
+		return weapon;
+	}
+
+	private Weapon increasedWeaponSize(Weapon weapon, int[][] diceArray) {
+		Weapon newWeapon = weapon;
+		int[] weaponDice = newWeapon.getDmgDice();
+		if (weaponDice == new int[] { 2, 4 })
+			newWeapon.setDmgDice(diceArray[5]);
+		if (weaponDice == new int[] { 1, 12 })
+			newWeapon.setDmgDice(diceArray[7]);
+		for (int i = 0; i < diceArray.length; i++) {
+			if (diceArray[i] == weaponDice) {
+				if (size < 0 || i <= 4) {
+					newWeapon.setDmgDice(diceArray[i + 1]);
+				} else {
+					newWeapon.setDmgDice(diceArray[i + 2]);
+				}
+
+			}
+		}
+		return newWeapon;
+	}
+
+	private Weapon decreasedWeaponSize(Weapon weapon, int[][] diceArray) {
+		// TODO Auto-generated method stub
+		Weapon newWeapon = weapon;
+		int[] weaponDice = newWeapon.getDmgDice();
+		if (weaponDice == new int[] { 2, 4 })
+			newWeapon.setDmgDice(diceArray[5]);
+		if (weaponDice == new int[] { 1, 12 })
+			newWeapon.setDmgDice(diceArray[7]);
+		for (int i = 0; i < diceArray.length; i++) {
+			if (diceArray[i] == weaponDice) {
+				if (size <= 0 || i <= 5) {
+					newWeapon.setDmgDice(diceArray[i - 1]);
+				} else {
+					newWeapon.setDmgDice(diceArray[i - 2]);
+				}
+
+			}
+		}
+		return newWeapon;
 	}
 
 	public void setName(String name) {
@@ -165,6 +228,13 @@ public class PfCharacter {
 	}
 
 	public void setSize(int size) {
+		if (this.size != 5){
+			this.str=this.str+(size-this.size)*2;
+			this.dex=this.dex-(size-this.size)*2;
+			for (Weapon weapon : weapons) {
+				weapon = adaptWeaponbySize(weapon, size);
+			}
+		}
 		this.size = size;
 	}
 

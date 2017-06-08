@@ -1,4 +1,4 @@
-Arathor;14;26;12;Power Attack;#
+Arathor;14;26;12;0;Power Attack;#
 Falchion;2;4;2;6;2;2;1.5;0;#;#
 Greataxe;1;12;3;1;0;0;1.5;0;#;#
 Greatclub;1;10;2;1;0;0;1.5;0;#;#

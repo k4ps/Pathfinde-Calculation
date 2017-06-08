@@ -41,7 +41,8 @@ public class Filesystem {
 		character.setBab(Integer.parseInt(parts[1]));
 		character.setDex(Integer.parseInt(parts[2]));
 		character.setStr(Integer.parseInt(parts[3]));
-		for (int i = 4; !(parts[i].equals("#")); i++) {
+		character.setSize(Integer.parseInt(parts[4]));
+		for (int i = 5; !(parts[i].equals("#")); i++) {
 			character.addFeat(parts[i]);
 		}
 		return character;
@@ -183,7 +184,7 @@ public class Filesystem {
 
 	private static String writeCharacter(PfCharacter character) {
 		String returnString = character.getName() + ";" + character.getBab() + ";" + character.getDex() + ";"
-				+ character.getStr() + ";";
+				+ character.getStr() + ";" + character.getSize() + ";";
 		for (String feat : character.getFeats()) {
 			returnString = returnString + feat + ";";
 		}

@@ -1,5 +1,16 @@
-Dire Tiger;10;17;29;Weapon Focus Bite;Weapon Focus Claw;#
-Bite;1;6;2;1;0;0;1.0;4;#;#
-Claw;1;4;2;1;0;0;1.0;4;#;#
-Claw;1;4;2;1;0;0;1.0;4;#;#
+Dire Tiger;10;19;31;1;Weapon Focus Bite;Weapon Focus Claw;#
+Bite;1;6;2;1;1;0;1.0;4;#;#
+Claw;1;4;2;1;1;0;1.0;4;#;#
+Claw;1;4;2;1;1;0;1.0;4;#;#
+/
+Full Attack
+1;20;10;false
+Bite;1;6;2;1;1;0;1.0;4;#;#
+#
+1;20;10;false
+Claw;1;4;2;1;1;0;1.0;4;#;#
+#
+1;20;10;false
+Claw;1;4;2;1;1;0;1.0;4;#;#
+#
 /
